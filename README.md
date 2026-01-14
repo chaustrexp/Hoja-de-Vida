@@ -180,9 +180,9 @@ Las contribuciones son bienvenidas. Para cambios importantes:
 ## 📞 Contacto
 
 **Cristian Contreras**
-- LinkedIn: [linkedin.com/in/cristian-contreras](https://linkedin.com/in/cristian-contreras)
-- GitHub: [github.com/cristian-contreras](https://github.com/cristian-contreras)
-- Email: cristian.contreras@email.com
+- LinkedIn: [linkedin.com/in/cristian-contreras](https://www.linkedin.com/in/cristian-contreras-9a4999343)
+- GitHub: [github.com/chaustrexp](https://github.com/chaustrexp)
+- Email: cristianchaustre90@email.com
 
 ---
 
