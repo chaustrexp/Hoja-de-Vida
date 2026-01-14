@@ -1,0 +1,177 @@
+/**
+ * PROJECTS COMPONENT STYLES
+ * =========================
+ * 
+ * Estilos para la sección de proyectos y experiencia
+ * Incluye cards de proyectos, tecnologías y estadísticas
+ * 
+ * @author Cristian Contreras
+ * @version 1.0.0
+ */
+
+/* ===== PROJECTS SECTION ===== */
+.projects-section {
+  @apply py-20 bg-gray-50 dark:bg-gray-800;
+}
+
+.projects-container {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.projects-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+/* ===== PROJECT CARDS ===== */
+.projects-card {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 p-8 group hover:scale-105 duration-500;
+}
+
+.projects-card-icon {
+  @apply w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg;
+}
+
+.projects-card-content {
+  @apply text-center space-y-4;
+}
+
+.projects-card-title {
+  @apply text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300;
+}
+
+.projects-card-description {
+  @apply text-gray-600 dark:text-gray-300 leading-relaxed;
+}
+
+.projects-card-features {
+  @apply space-y-2;
+}
+
+.projects-card-features-title {
+  @apply text-sm font-semibold text-gray-700 dark:text-gray-300;
+}
+
+.projects-card-features-list {
+  @apply text-sm text-gray-600 dark:text-gray-400 space-y-1;
+}
+
+.projects-card-feature-item {
+  @apply flex items-center justify-center space-x-2;
+}
+
+.projects-card-feature-check {
+  @apply fas fa-check text-green-500 text-xs;
+}
+
+.projects-card-technologies {
+  @apply flex flex-wrap justify-center gap-2 pt-4;
+}
+
+.projects-card-tech-tag {
+  @apply px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-xs font-medium rounded-full;
+}
+
+/* ===== PROJECT GRADIENTS ===== */
+.projects-gradient-blue-purple {
+  @apply bg-gradient-to-br from-blue-500 to-purple-600;
+}
+
+.projects-gradient-green-teal {
+  @apply bg-gradient-to-br from-green-500 to-teal-600;
+}
+
+.projects-gradient-orange-red {
+  @apply bg-gradient-to-br from-orange-500 to-red-600;
+}
+
+.projects-gradient-indigo-purple {
+  @apply bg-gradient-to-br from-indigo-500 to-purple-600;
+}
+
+/* ===== EXPERIENCE SECTION ===== */
+.projects-experience {
+  @apply mt-16;
+}
+
+.projects-experience-card {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 p-8 text-center;
+}
+
+.projects-experience-icon {
+  @apply w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6;
+}
+
+.projects-experience-title {
+  @apply text-2xl font-semibold text-gray-900 dark:text-white mb-4;
+}
+
+.projects-experience-description {
+  @apply text-gray-600 dark:text-gray-300 leading-relaxed mb-6 max-w-3xl mx-auto;
+}
+
+.projects-experience-stats {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-6 mt-8;
+}
+
+.projects-experience-stat {
+  @apply text-center;
+}
+
+.projects-experience-stat-number {
+  @apply text-3xl font-bold mb-2;
+}
+
+.projects-experience-stat-label {
+  @apply text-sm text-gray-600 dark:text-gray-400;
+}
+
+.projects-stat-primary {
+  @apply text-primary-600 dark:text-primary-400;
+}
+
+.projects-stat-secondary {
+  @apply text-secondary-600 dark:text-secondary-400;
+}
+
+.projects-stat-accent {
+  @apply text-accent-600 dark:text-accent-400;
+}
+
+/* ===== CALL TO ACTION ===== */
+.projects-cta {
+  @apply mt-12 text-center;
+}
+
+.projects-cta-text {
+  @apply text-lg text-gray-600 dark:text-gray-300 mb-6;
+}
+
+.projects-cta-button {
+  @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg inline-flex items-center gap-2;
+}
+
+/* ===== ANIMATIONS ===== */
+.projects-animate-fade-in-up {
+  @apply animate-fade-in-up;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .projects-grid {
+    @apply grid-cols-1 md:grid-cols-2;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    @apply grid-cols-1;
+  }
+  
+  .projects-experience-stats {
+    @apply grid-cols-1 gap-4;
+  }
+  
+  .projects-card-icon {
+    @apply w-16 h-16;
+  }
+}

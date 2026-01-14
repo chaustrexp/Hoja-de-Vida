@@ -1,0 +1,163 @@
+/**
+ * FOOTER COMPONENT STYLES
+ * =======================
+ * 
+ * Estilos para el pie de página
+ * Incluye información personal, enlaces y mensaje motivacional
+ * 
+ * @author Cristian Contreras
+ * @version 1.0.0
+ */
+
+/* ===== FOOTER SECTION ===== */
+.footer-section {
+  @apply bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700;
+}
+
+.footer-container {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* ===== FOOTER MAIN CONTENT ===== */
+.footer-main {
+  @apply py-12 grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+
+.footer-personal {
+  @apply space-y-4;
+}
+
+.footer-personal-title {
+  @apply text-xl font-bold bg-gradient-to-r from-primary-600 via-purple-600 to-secondary-500 bg-clip-text text-transparent;
+}
+
+.footer-personal-description {
+  @apply text-gray-600 dark:text-gray-300 leading-relaxed;
+}
+
+.footer-social {
+  @apply flex space-x-4;
+}
+
+.footer-social-link {
+  @apply w-10 h-10 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 transform hover:-translate-y-1 transition-all duration-300 shadow-md hover:shadow-lg;
+}
+
+.footer-social-linkedin {
+  @apply hover:text-blue-600;
+}
+
+.footer-social-github {
+  @apply hover:text-gray-600;
+}
+
+.footer-social-email {
+  @apply hover:text-red-600;
+}
+
+/* ===== QUICK LINKS ===== */
+.footer-links {
+  @apply space-y-4;
+}
+
+.footer-links-title {
+  @apply text-lg font-semibold text-gray-900 dark:text-white;
+}
+
+.footer-links-list {
+  @apply space-y-2;
+}
+
+.footer-links-item {
+  @apply text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 cursor-pointer;
+}
+
+/* ===== CONTACT INFO ===== */
+.footer-contact {
+  @apply space-y-4;
+}
+
+.footer-contact-title {
+  @apply text-lg font-semibold text-gray-900 dark:text-white;
+}
+
+.footer-contact-items {
+  @apply space-y-3;
+}
+
+.footer-contact-item {
+  @apply flex items-center space-x-3;
+}
+
+.footer-contact-icon {
+  @apply text-red-500;
+}
+
+.footer-contact-icon-phone {
+  @apply text-green-500;
+}
+
+.footer-contact-icon-email {
+  @apply text-blue-500;
+}
+
+.footer-contact-text {
+  @apply text-gray-600 dark:text-gray-300;
+}
+
+/* ===== FOOTER BOTTOM ===== */
+.footer-divider {
+  @apply border-t border-gray-200 dark:border-gray-700;
+}
+
+.footer-bottom {
+  @apply py-6 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0;
+}
+
+.footer-copyright {
+  @apply text-center md:text-left;
+}
+
+.footer-copyright-text {
+  @apply text-gray-600 dark:text-gray-300;
+}
+
+.footer-copyright-tech {
+  @apply text-sm text-gray-500 dark:text-gray-400 mt-1;
+}
+
+.footer-scroll-top {
+  @apply w-12 h-12 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center text-white transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl;
+}
+
+/* ===== MOTIVATIONAL MESSAGE ===== */
+.footer-message {
+  @apply bg-primary-600 dark:bg-primary-700;
+}
+
+.footer-message-container {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4;
+}
+
+.footer-message-text {
+  @apply text-center text-white text-sm;
+}
+
+.footer-message-heart {
+  @apply fas fa-heart text-red-300;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .footer-main {
+    @apply grid-cols-1 gap-6;
+  }
+  
+  .footer-bottom {
+    @apply flex-col gap-4 text-center;
+  }
+  
+  .footer-social {
+    @apply justify-center;
+  }
+}

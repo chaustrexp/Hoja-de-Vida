@@ -1,0 +1,95 @@
+/**
+ * PROFILE COMPONENT STYLES
+ * ========================
+ * 
+ * Estilos para la sección de perfil profesional
+ * Incluye descripción personal y estadísticas
+ * 
+ * @author Cristian Contreras
+ * @version 1.0.0
+ */
+
+/* ===== PROFILE SECTION ===== */
+.profile-section {
+  @apply py-20 bg-white dark:bg-gray-900;
+}
+
+.profile-container {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.profile-grid {
+  @apply grid grid-cols-1 lg:grid-cols-3 gap-12 items-center;
+}
+
+/* ===== PROFILE CONTENT ===== */
+.profile-content {
+  @apply lg:col-span-2 space-y-6;
+}
+
+.profile-text {
+  @apply text-lg text-gray-600 dark:text-gray-300 leading-relaxed;
+}
+
+.profile-features {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4 mt-8;
+}
+
+.profile-feature {
+  @apply flex items-center space-x-3;
+}
+
+.profile-feature-icon {
+  @apply w-8 h-8 rounded-full flex items-center justify-center;
+}
+
+.profile-feature-text {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+/* ===== PROFILE STATS ===== */
+.profile-stats {
+  @apply space-y-6;
+}
+
+.profile-stat-card {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 p-6 text-center hover:scale-105;
+}
+
+.profile-stat-number {
+  @apply text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2;
+}
+
+.profile-stat-label {
+  @apply text-sm text-gray-600 dark:text-gray-400 font-medium;
+}
+
+/* ===== ANIMATIONS ===== */
+.profile-animate-fade-in-up {
+  @apply animate-fade-in-up;
+}
+
+.profile-animate-slide-in-right {
+  @apply animate-slide-in-right;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .profile-grid {
+    @apply grid-cols-1 text-center;
+  }
+  
+  .profile-stats {
+    @apply grid grid-cols-3 gap-4 space-y-0;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-features {
+    @apply grid-cols-1;
+  }
+  
+  .profile-stats {
+    @apply grid-cols-1 space-y-6;
+  }
+}

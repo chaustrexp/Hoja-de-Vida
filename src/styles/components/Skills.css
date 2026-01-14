@@ -1,0 +1,183 @@
+/**
+ * SKILLS COMPONENT STYLES
+ * =======================
+ * 
+ * Estilos para la sección de habilidades técnicas y blandas
+ * Incluye barras de progreso animadas y cards de habilidades
+ * 
+ * @author Cristian Contreras
+ * @version 1.0.0
+ */
+
+/* ===== SKILLS SECTION ===== */
+.skills-section {
+  @apply py-20 bg-white dark:bg-gray-900;
+}
+
+.skills-container {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.skills-grid {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-16;
+}
+
+/* ===== SKILLS CATEGORIES ===== */
+.skills-category-title {
+  @apply text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-8;
+}
+
+/* ===== TECHNICAL SKILLS ===== */
+.skills-technical-list {
+  @apply space-y-6;
+}
+
+.skills-technical-item {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 p-6;
+}
+
+.skills-technical-header {
+  @apply flex items-center justify-between mb-3;
+}
+
+.skills-technical-info {
+  @apply flex items-center space-x-3;
+}
+
+.skills-technical-icon {
+  @apply text-xl text-gray-600 dark:text-gray-400;
+}
+
+.skills-technical-name {
+  @apply font-semibold text-gray-900 dark:text-white;
+}
+
+.skills-technical-level {
+  @apply text-primary-600 dark:text-primary-400 font-bold;
+}
+
+.skills-technical-bar {
+  @apply w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden;
+}
+
+.skills-technical-progress {
+  @apply h-full rounded-full transition-all duration-1000 ease-out;
+}
+
+/* ===== SOFT SKILLS ===== */
+.skills-soft-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-6;
+}
+
+.skills-soft-card {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 p-6 text-center group hover:scale-105;
+}
+
+.skills-soft-icon-container {
+  @apply w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300;
+}
+
+.skills-soft-icon {
+  @apply text-2xl;
+}
+
+.skills-soft-name {
+  @apply font-semibold text-gray-900 dark:text-white;
+}
+
+/* ===== TECHNOLOGIES SECTION ===== */
+.skills-technologies {
+  @apply mt-16;
+}
+
+.skills-technologies-title {
+  @apply text-2xl font-semibold text-gray-900 dark:text-white mb-8 text-center;
+}
+
+.skills-technologies-grid {
+  @apply flex flex-wrap justify-center gap-4;
+}
+
+.skills-technology-tag {
+  @apply flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full hover:scale-105 transition-transform duration-200;
+}
+
+.skills-technology-icon {
+  /* Color específico se aplica inline */
+}
+
+.skills-technology-name {
+  @apply text-sm font-medium text-gray-700 dark:text-gray-300;
+}
+
+/* ===== PROGRESS BAR GRADIENTS ===== */
+.skills-gradient-orange-red {
+  @apply bg-gradient-to-r from-orange-500 to-red-500;
+}
+
+.skills-gradient-yellow {
+  @apply bg-gradient-to-r from-yellow-400 to-yellow-600;
+}
+
+.skills-gradient-gray {
+  @apply bg-gradient-to-r from-gray-700 to-gray-900;
+}
+
+.skills-gradient-purple-pink {
+  @apply bg-gradient-to-r from-purple-500 to-pink-500;
+}
+
+.skills-gradient-blue {
+  @apply bg-gradient-to-r from-blue-500 to-blue-700;
+}
+
+/* ===== SOFT SKILLS COLORS ===== */
+.skills-soft-blue {
+  @apply text-blue-500;
+}
+
+.skills-soft-green {
+  @apply text-green-500;
+}
+
+.skills-soft-purple {
+  @apply text-purple-500;
+}
+
+.skills-soft-orange {
+  @apply text-orange-500;
+}
+
+.skills-soft-red {
+  @apply text-red-500;
+}
+
+.skills-soft-yellow {
+  @apply text-yellow-500;
+}
+
+/* ===== ANIMATIONS ===== */
+.skills-animate-fade-in-up {
+  @apply animate-fade-in-up;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .skills-grid {
+    @apply grid-cols-1;
+  }
+}
+
+@media (max-width: 640px) {
+  .skills-soft-grid {
+    @apply grid-cols-1;
+  }
+  
+  .skills-technologies-grid {
+    @apply gap-2;
+  }
+  
+  .skills-technology-tag {
+    @apply px-3 py-1;
+  }
+}

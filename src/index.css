@@ -1,0 +1,309 @@
+/**
+ * ESTILOS GLOBALES - HOJA DE VIDA DIGITAL
+ * =======================================
+ * 
+ * Archivo principal de estilos que incluye:
+ * - Configuración de Tailwind CSS
+ * - Estilos base y reset
+ * - Componentes globales reutilizables
+ * - Utilidades personalizadas
+ * 
+ * @author Cristian Contreras
+ * @version 2.0.0
+ * @since 2024-12-29
+ */
+
+/* ===== TAILWIND CSS IMPORTS ===== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== GOOGLE FONTS IMPORT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ===== BASE LAYER - ESTILOS FUNDAMENTALES ===== */
+@layer base {
+  /**
+   * Configuración HTML base
+   * Habilita scroll suave para toda la aplicación
+   */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /**
+   * Configuración del body
+   * Establece la fuente principal del proyecto
+   */
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* ===== COMPONENTS LAYER - COMPONENTES REUTILIZABLES ===== */
+@layer components {
+  /**
+   * Botón primario estándar con paleta de grises elegante
+   * Usado en CTAs principales y acciones importantes
+   */
+  .btn-primary {
+    @apply bg-gradient-to-r from-elegant-700 to-elegant-900 hover:from-elegant-800 hover:to-elegant-900 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg inline-flex items-center gap-2;
+  }
+  
+  /**
+   * Botón secundario estándar con paleta de grises
+   * Usado en acciones secundarias y enlaces
+   */
+  .btn-secondary {
+    @apply bg-transparent border-2 border-elegant-300 hover:border-elegant-600 text-elegant-700 dark:text-elegant-300 hover:text-elegant-800 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 inline-flex items-center gap-2;
+  }
+  
+  /**
+   * Card base estándar con paleta de grises
+   * Usado en todos los componentes que necesitan contenedor elevado
+   */
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border border-elegant-200 dark:border-gray-700;
+  }
+  
+  /**
+   * Título de sección estándar con paleta de grises
+   * Usado en todos los títulos principales de sección
+   */
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-center mb-12 relative text-elegant-900 dark:text-white;
+  }
+  
+  /**
+   * Pseudo-elemento para línea decorativa bajo títulos con gradiente de grises
+   * Crea una línea con gradiente centrada bajo cada título de sección
+   */
+  .section-title::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-elegant-500 to-elegant-700 rounded-full;
+    bottom: -8px;
+  }
+}
+
+/* ===== UTILITIES LAYER - UTILIDADES PERSONALIZADAS ===== */
+@layer utilities {
+  /**
+   * Texto con gradiente de grises elegante
+   * Crea efecto de texto con gradiente de colores grises
+   */
+  .text-gradient {
+    @apply bg-gradient-to-r from-elegant-700 to-elegant-900 bg-clip-text text-transparent;
+  }
+  
+  /**
+   * Fondo con gradiente de grises
+   * Gradiente estándar usado en elementos destacados
+   */
+  .bg-gradient-primary {
+    @apply bg-gradient-to-br from-elegant-700 to-elegant-900;
+  }
+  
+  /**
+   * Animación de entrada desde abajo
+   * Efecto suave de aparición con movimiento vertical
+   */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  /**
+   * Animación de entrada desde la derecha
+   * Efecto suave de aparición con movimiento horizontal
+   */
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+}
+
+/* ===== KEYFRAMES - DEFINICIÓN DE ANIMACIONES ===== */
+
+/**
+ * Animación fadeInUp
+ * Elemento aparece desde abajo con fade
+ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * Animación slideInRight
+ * Elemento aparece desde la derecha con fade
+ */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/**
+ * Animación bounceIn
+ * Elemento aparece con efecto de rebote
+ */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== SCROLL BEHAVIOR - COMPORTAMIENTO DE SCROLL ===== */
+
+/**
+ * Smooth scrolling para navegadores que no lo soporten nativamente
+ * Fallback para navegadores más antiguos
+ */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/**
+ * Respeta las preferencias de movimiento reducido del usuario
+ * Desactiva animaciones para usuarios que lo prefieran
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== CUSTOM SCROLLBAR - BARRA DE SCROLL PERSONALIZADA ===== */
+
+/**
+ * Estilización de la barra de scroll para navegadores WebKit
+ * Crea una barra de scroll más elegante y acorde al diseño de grises
+ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-elegant-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-elegant-500 dark:bg-elegant-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-elegant-600 dark:bg-elegant-500;
+}
+
+/* ===== SELECTION - SELECCIÓN DE TEXTO ===== */
+
+/**
+ * Personalización de la selección de texto con paleta de grises
+ * Usa los colores grises del proyecto
+ */
+::selection {
+  @apply bg-elegant-200 dark:bg-elegant-800 text-elegant-900 dark:text-elegant-100;
+}
+
+::-moz-selection {
+  @apply bg-elegant-200 dark:bg-elegant-800 text-elegant-900 dark:text-elegant-100;
+}
+
+/* ===== FOCUS STYLES - ESTILOS DE ENFOQUE ===== */
+
+/**
+ * Estilos de enfoque personalizados para accesibilidad con paleta de grises
+ * Mejora la navegación por teclado
+ */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-elegant-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900;
+}
+
+/* ===== PRINT STYLES - ESTILOS PARA IMPRESIÓN ===== */
+
+/**
+ * Estilos optimizados para impresión
+ * Asegura que el CV se vea bien al imprimir
+ */
+@media print {
+  body {
+    @apply text-black bg-white;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-before: always;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+}
+
+/* ===== LOADING STATES - ESTADOS DE CARGA ===== */
+
+/**
+ * Animación de carga tipo skeleton
+ * Para elementos que están cargando contenido
+ */
+.skeleton {
+  @apply bg-elegant-200 dark:bg-gray-700 animate-pulse rounded;
+}
+
+/**
+ * Spinner de carga con paleta de grises
+ * Para botones y elementos en estado de carga
+ */
+.spinner {
+  @apply animate-spin rounded-full border-2 border-elegant-300 border-t-elegant-600;
+}
+
+/* ===== RESPONSIVE HELPERS - AYUDAS RESPONSIVE ===== */
+
+/**
+ * Utilidades para mostrar/ocultar elementos según el tamaño de pantalla
+ * Complementa las utilidades de Tailwind
+ */
+.mobile-only {
+  @apply block sm:hidden;
+}
+
+.desktop-only {
+  @apply hidden lg:block;
+}
+
+.tablet-only {
+  @apply hidden sm:block lg:hidden;
+}

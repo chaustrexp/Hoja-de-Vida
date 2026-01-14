@@ -1,0 +1,194 @@
+/**
+ * NAVBAR COMPONENT STYLES
+ * =====================
+ * 
+ * Estilos específicos para el componente Navbar
+ * Incluye estilos para navegación desktop, móvil y efectos de scroll
+ * 
+ * @author Cristian Contreras
+ * @version 1.0.0
+ */
+
+/* ===== NAVBAR BASE STYLES ===== */
+.navbar-container {
+  @apply fixed top-0 left-0 right-0 z-50 transition-all duration-500;
+}
+
+/* Estado normal del navbar */
+.navbar-normal {
+  @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg;
+}
+
+/* Estado scrolled del navbar */
+.navbar-scrolled {
+  @apply bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl border-b border-gray-200/20 dark:border-gray-700/20;
+}
+
+/* ===== LOGO STYLES ===== */
+.navbar-logo {
+  @apply flex-shrink-0 group;
+}
+
+.navbar-logo-container {
+  @apply flex items-center space-x-3;
+}
+
+.navbar-logo-avatar {
+  @apply w-10 h-10 bg-gradient-to-br from-primary-600 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110;
+}
+
+.navbar-logo-text {
+  @apply text-xl font-bold bg-gradient-to-r from-primary-600 via-purple-600 to-secondary-500 bg-clip-text text-transparent;
+}
+
+.navbar-logo-subtitle {
+  @apply text-xs text-gray-500 dark:text-gray-400 font-medium;
+}
+
+/* ===== DESKTOP NAVIGATION ===== */
+.navbar-desktop {
+  @apply hidden lg:block;
+}
+
+.navbar-pills-container {
+  @apply flex items-center space-x-2 bg-gray-100/80 dark:bg-gray-800/80 rounded-2xl p-2 backdrop-blur-sm;
+}
+
+.navbar-pill {
+  @apply group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2;
+}
+
+.navbar-pill-active {
+  @apply bg-white dark:bg-gray-700 text-primary-600 dark:text-primary-400 shadow-lg scale-105;
+}
+
+.navbar-pill-inactive {
+  @apply text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-white/50 dark:hover:bg-gray-700/50;
+}
+
+.navbar-pill-icon {
+  @apply text-sm transition-transform duration-300;
+}
+
+.navbar-pill-indicator {
+  @apply absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary-600 dark:bg-primary-400 rounded-full;
+}
+
+/* ===== CONTROLS STYLES ===== */
+.navbar-controls {
+  @apply flex items-center space-x-4;
+}
+
+.navbar-theme-button {
+  @apply relative p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 group overflow-hidden;
+}
+
+.navbar-theme-icon {
+  @apply text-lg text-gray-600 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300;
+}
+
+.navbar-cta-button {
+  @apply px-6 py-2.5 bg-gradient-to-r from-primary-600 to-secondary-500 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 flex items-center space-x-2;
+}
+
+/* ===== MOBILE MENU ===== */
+.navbar-mobile-toggle {
+  @apply lg:hidden relative p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 group;
+}
+
+.navbar-mobile-menu {
+  @apply lg:hidden transition-all duration-500 ease-in-out overflow-hidden;
+}
+
+.navbar-mobile-menu-open {
+  @apply max-h-96 opacity-100;
+}
+
+.navbar-mobile-menu-closed {
+  @apply max-h-0 opacity-0;
+}
+
+.navbar-mobile-container {
+  @apply mx-4 mb-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20;
+}
+
+.navbar-mobile-item {
+  @apply w-full flex items-center space-x-4 px-4 py-3 rounded-xl text-left transition-all duration-300 transform hover:scale-105;
+}
+
+.navbar-mobile-item-active {
+  @apply bg-gradient-to-r from-primary-600 to-secondary-500 text-white shadow-lg;
+}
+
+.navbar-mobile-item-inactive {
+  @apply text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700;
+}
+
+/* ===== HAMBURGER ANIMATION ===== */
+.hamburger-line {
+  @apply bg-gray-600 dark:bg-gray-300 block transition-all duration-300 ease-out h-0.5 w-6 rounded-full;
+}
+
+.hamburger-line-1-open {
+  @apply rotate-45 translate-y-1.5;
+}
+
+.hamburger-line-1-closed {
+  @apply -translate-y-1;
+}
+
+.hamburger-line-2-open {
+  @apply opacity-0;
+}
+
+.hamburger-line-2-closed {
+  @apply opacity-100;
+}
+
+.hamburger-line-3-open {
+  @apply -rotate-45 -translate-y-1.5;
+}
+
+.hamburger-line-3-closed {
+  @apply translate-y-1;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+@media (max-width: 1024px) {
+  .navbar-pill span {
+    @apply hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-logo-text {
+    @apply text-lg;
+  }
+  
+  .navbar-logo-subtitle {
+    @apply hidden;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+.navbar-pill:focus,
+.navbar-theme-button:focus,
+.navbar-mobile-toggle:focus {
+  @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-white dark:ring-offset-gray-900;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes navbar-slide-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar-container {
+  animation: navbar-slide-down 0.5s ease-out;
+}
