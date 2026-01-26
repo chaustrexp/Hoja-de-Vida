@@ -51,12 +51,12 @@ const Skills = () => {
    * Mantiene colores diversos para diferenciación
    */
   const softSkills = [
-    { name: 'Trabajo en Equipo', icon: 'fas fa-users', color: 'text-elegant-600' },
-    { name: 'Puntualidad', icon: 'fas fa-clock', color: 'text-elegant-700' },
-    { name: 'Responsabilidad', icon: 'fas fa-handshake', color: 'text-elegant-500' },
-    { name: 'Comunicación', icon: 'fas fa-comments', color: 'text-elegant-800' },
-    { name: 'Aprendizaje Continuo', icon: 'fas fa-graduation-cap', color: 'text-elegant-600' },
-    { name: 'Creatividad', icon: 'fas fa-lightbulb', color: 'text-elegant-700' }
+    { name: 'Trabajo en Equipo', icon: 'fas fa-users', color: 'text-elegant-600 dark:text-elegant-300' },
+    { name: 'Puntualidad', icon: 'fas fa-clock', color: 'text-elegant-700 dark:text-elegant-200' },
+    { name: 'Responsabilidad', icon: 'fas fa-handshake', color: 'text-elegant-500 dark:text-elegant-400' },
+    { name: 'Comunicación', icon: 'fas fa-comments', color: 'text-elegant-800 dark:text-elegant-100' },
+    { name: 'Aprendizaje Continuo', icon: 'fas fa-graduation-cap', color: 'text-elegant-600 dark:text-elegant-300' },
+    { name: 'Creatividad', icon: 'fas fa-lightbulb', color: 'text-elegant-700 dark:text-elegant-200' }
   ];
 
   // ===== EFECTOS =====
@@ -159,21 +159,21 @@ const Skills = () => {
           </h3>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {[
-              { name: 'HTML5', icon: 'fab fa-html5', color: 'text-orange-500' },
-              { name: 'CSS3', icon: 'fab fa-css3-alt', color: 'text-blue-500' },
-              { name: 'JavaScript', icon: 'fab fa-js-square', color: 'text-yellow-500' },
-              { name: 'Git', icon: 'fab fa-git-alt', color: 'text-red-500' },
-              { name: 'GitHub', icon: 'fab fa-github', color: 'text-gray-700 dark:text-gray-300' },
-              { name: 'VS Code', icon: 'fas fa-code', color: 'text-blue-600' },
-              { name: 'Figma', icon: 'fab fa-figma', color: 'text-purple-500' },
-              { name: 'Bootstrap', icon: 'fab fa-bootstrap', color: 'text-purple-600' }
+              { name: 'HTML5', icon: 'fab fa-html5', color: 'text-orange-500 dark:text-orange-400' },
+              { name: 'CSS3', icon: 'fab fa-css3-alt', color: 'text-blue-500 dark:text-blue-400' },
+              { name: 'JavaScript', icon: 'fab fa-js-square', color: 'text-yellow-500 dark:text-yellow-400' },
+              { name: 'Git', icon: 'fab fa-git-alt', color: 'text-red-500 dark:text-red-400' },
+              { name: 'GitHub', icon: 'fab fa-github', color: 'text-gray-700 dark:text-gray-200' },
+              { name: 'VS Code', icon: 'fas fa-code', color: 'text-blue-600 dark:text-blue-400' },
+              { name: 'Figma', icon: 'fab fa-figma', color: 'text-purple-500 dark:text-purple-400' },
+              { name: 'Bootstrap', icon: 'fab fa-bootstrap', color: 'text-purple-600 dark:text-purple-400' }
             ].map((tech, index) => (
               <div
                 key={tech.name}
-                className="flex items-center space-x-2 bg-elegant-100 dark:bg-gray-800 px-3 sm:px-4 py-2 rounded-full hover:scale-105 transition-transform duration-200"
+                className="flex items-center space-x-2 bg-elegant-100 dark:bg-gray-700 px-3 sm:px-4 py-2 rounded-full hover:scale-105 transition-transform duration-200 border border-elegant-200 dark:border-gray-600"
               >
                 <i className={`${tech.icon} ${tech.color} text-sm sm:text-base`}></i>
-                <span className="text-xs sm:text-sm font-medium text-elegant-700 dark:text-gray-300">{tech.name}</span>
+                <span className="text-xs sm:text-sm font-medium text-elegant-700 dark:text-gray-200">{tech.name}</span>
               </div>
             ))}
           </div>

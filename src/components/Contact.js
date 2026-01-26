@@ -51,19 +51,19 @@ const Contact = () => {
       icon: 'fas fa-map-marker-alt',
       title: 'Ubicación',
       value: 'Cúcuta, Norte de Santander',
-      color: 'text-elegant-600'
+      color: 'text-elegant-600 dark:text-elegant-300'
     },
     {
       icon: 'fas fa-phone',
       title: 'Teléfono',
       value: '+57 3229615724',
-      color: 'text-elegant-700'
+      color: 'text-elegant-700 dark:text-elegant-200'
     },
     {
       icon: 'fas fa-envelope',
       title: 'Email',
       value: 'cristianchaustre90@gmail.com',
-      color: 'text-elegant-500'
+      color: 'text-elegant-500 dark:text-elegant-400'
     }
   ];
 
@@ -137,7 +137,7 @@ const Contact = () => {
         <i className={`${info.icon} text-lg sm:text-2xl ${info.color}`}></i>
       </div>
       <h4 className="font-semibold text-elegant-900 dark:text-white mb-2 text-sm sm:text-base">{info.title}</h4>
-      <p className="text-elegant-600 dark:text-gray-300 text-sm sm:text-base">{info.value}</p>
+      <p className="text-elegant-600 dark:text-gray-200 text-sm sm:text-base">{info.value}</p>
     </div>
   );
 

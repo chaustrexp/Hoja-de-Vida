@@ -102,10 +102,10 @@ const Footer = () => {
         <div className="py-8 sm:py-12 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Información personal */}
           <div className="space-y-3 sm:space-y-4 text-center md:text-left">
-            <h3 className="text-lg sm:text-xl font-bold text-gradient">
+            <h3 className="text-lg sm:text-xl font-bold text-gradient dark:text-gradient-dark">
               Cristian Contreras
             </h3>
-            <p className="text-sm sm:text-base text-elegant-600 dark:text-gray-300 leading-relaxed">
+            <p className="text-sm sm:text-base text-elegant-600 dark:text-gray-200 leading-relaxed">
               Desarrollador ADSO en formación, apasionado por crear soluciones 
               digitales innovadoras y comprometido con el aprendizaje continuo.
             </p>
@@ -135,7 +135,7 @@ const Footer = () => {
                 <li key={link.href}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-sm sm:text-base text-elegant-600 dark:text-gray-300 hover:text-elegant-600 dark:hover:text-elegant-400 transition-colors duration-200"
+                    className="text-sm sm:text-base text-elegant-600 dark:text-gray-200 hover:text-elegant-600 dark:hover:text-elegant-300 transition-colors duration-200"
                   >
                     {link.label}
                   </button>
@@ -151,20 +151,20 @@ const Footer = () => {
             </h4>
             <div className="space-y-2 sm:space-y-3">
               <div className="flex items-center space-x-2 sm:space-x-3 justify-center md:justify-start">
-                <i className="fas fa-map-marker-alt text-elegant-500 text-sm sm:text-base"></i>
-                <span className="text-sm sm:text-base text-elegant-600 dark:text-gray-300">
+                <i className="fas fa-map-marker-alt text-elegant-500 dark:text-elegant-300 text-sm sm:text-base"></i>
+                <span className="text-sm sm:text-base text-elegant-600 dark:text-gray-200">
                   Cúcuta, Norte de Santander
                 </span>
               </div>
               <div className="flex items-center space-x-2 sm:space-x-3 justify-center md:justify-start">
-                <i className="fas fa-phone text-elegant-600 text-sm sm:text-base"></i>
-                <span className="text-sm sm:text-base text-elegant-600 dark:text-gray-300">
+                <i className="fas fa-phone text-elegant-600 dark:text-elegant-300 text-sm sm:text-base"></i>
+                <span className="text-sm sm:text-base text-elegant-600 dark:text-gray-200">
                   +57 3229615724
                 </span>
               </div>
               <div className="flex items-center space-x-2 sm:space-x-3 justify-center md:justify-start">
-                <i className="fas fa-envelope text-elegant-700 text-sm sm:text-base"></i>
-                <span className="text-sm sm:text-base text-elegant-600 dark:text-gray-300">
+                <i className="fas fa-envelope text-elegant-700 dark:text-elegant-300 text-sm sm:text-base"></i>
+                <span className="text-sm sm:text-base text-elegant-600 dark:text-gray-200">
                   cristianchaustre90@gmail.com
                 </span>
               </div>
@@ -178,10 +178,10 @@ const Footer = () => {
         {/* Copyright y botón scroll to top */}
         <div className="py-4 sm:py-6 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
           <div className="text-center md:text-left">
-            <p className="text-sm sm:text-base text-elegant-600 dark:text-gray-300">
+            <p className="text-sm sm:text-base text-elegant-600 dark:text-gray-200">
               &copy; {currentYear} Cristian Contreras. Todos los derechos reservados.
             </p>
-            <p className="text-xs sm:text-sm text-elegant-500 dark:text-gray-400 mt-1">
+            <p className="text-xs sm:text-sm text-elegant-500 dark:text-gray-300 mt-1">
               Desarrollado con React y Tailwind CSS
             </p>
           </div>

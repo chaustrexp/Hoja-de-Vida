@@ -110,13 +110,13 @@ const Education = () => {
                       <h3 className="text-lg sm:text-xl font-semibold text-elegant-900 dark:text-white mb-2 leading-tight">
                         {item.title}
                       </h3>
-                      <p className="text-elegant-600 dark:text-elegant-400 font-medium mb-1 text-sm sm:text-base">
+                      <p className="text-elegant-600 dark:text-gray-300 font-medium mb-1 text-sm sm:text-base">
                         {item.institution}
                       </p>
-                      <p className="text-xs sm:text-sm text-elegant-500 dark:text-gray-400 mb-3">
+                      <p className="text-xs sm:text-sm text-elegant-500 dark:text-gray-300 mb-3">
                         {item.period}
                       </p>
-                      <p className="text-sm sm:text-base text-elegant-700 dark:text-gray-300 leading-relaxed">
+                      <p className="text-sm sm:text-base text-elegant-700 dark:text-gray-200 leading-relaxed">
                         {item.description}
                       </p>
                     </div>
@@ -136,17 +136,17 @@ const Education = () => {
             <div className="card p-4 sm:p-6 text-center">
               <i className="fab fa-html5 text-2xl sm:text-3xl text-orange-500 mb-3"></i>
               <h4 className="font-semibold text-elegant-900 dark:text-white text-sm sm:text-base">HTML5 & CSS3</h4>
-              <p className="text-xs sm:text-sm text-elegant-600 dark:text-gray-400">Desarrollo Web Frontend</p>
+              <p className="text-xs sm:text-sm text-elegant-600 dark:text-gray-300">Desarrollo Web Frontend</p>
             </div>
             <div className="card p-4 sm:p-6 text-center">
               <i className="fab fa-js-square text-2xl sm:text-3xl text-yellow-500 mb-3"></i>
               <h4 className="font-semibold text-elegant-900 dark:text-white text-sm sm:text-base">JavaScript</h4>
-              <p className="text-xs sm:text-sm text-elegant-600 dark:text-gray-400">Programación Interactiva</p>
+              <p className="text-xs sm:text-sm text-elegant-600 dark:text-gray-300">Programación Interactiva</p>
             </div>
             <div className="card p-4 sm:p-6 text-center sm:col-span-2 lg:col-span-1">
               <i className="fab fa-git-alt text-2xl sm:text-3xl text-red-500 mb-3"></i>
               <h4 className="font-semibold text-elegant-900 dark:text-white text-sm sm:text-base">Git & GitHub</h4>
-              <p className="text-xs sm:text-sm text-elegant-600 dark:text-gray-400">Control de Versiones</p>
+              <p className="text-xs sm:text-sm text-elegant-600 dark:text-gray-300">Control de Versiones</p>
             </div>
           </div>
         </div>

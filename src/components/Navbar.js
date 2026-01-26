@@ -98,13 +98,16 @@ const Navbar = () => {
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 border-2 border-elegant-200 dark:border-gray-600">
                   <img 
-                    src="/img/Foto de Perfil.jpeg" 
+                    src="/img/foto de perfil mientras.jpg" 
                     alt="Cristian Contreras"
                     className="w-full h-full object-cover object-center"
+                    onError={(e) => {
+                      e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjIwIiBjeT0iMTUiIHI9IjUiIGZpbGw9IiM5QjlCQTMiLz4KPHN0eWxlPi5zdDB7ZmlsbDojOUI5QkEzO308L3N0eWxlPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTAsMzBjMC0zLjMsMi43LTYsNi02aDhjMy4zLDAsNiwyLjcsNiw2djJIMTBWMzB6Ii8+Cjwvc3ZnPgo=';
+                    }}
                   />
                 </div>
                 <div className="hidden sm:block">
-                  <h1 className="text-lg sm:text-xl font-bold text-gradient">
+                  <h1 className="text-lg sm:text-xl font-bold text-gradient dark:text-gradient-dark">
                     Cristian Contreras
                   </h1>
                   <p className="text-xs text-elegant-500 dark:text-gray-400 font-medium">

@@ -92,7 +92,15 @@
    * Crea efecto de texto con gradiente de colores grises
    */
   .text-gradient {
-    @apply bg-gradient-to-r from-elegant-700 to-elegant-900 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-elegant-700 to-elegant-800 bg-clip-text text-transparent;
+  }
+  
+  /**
+   * Texto con gradiente adaptado para tema oscuro
+   * Gradiente más sutil y elegante para modo oscuro
+   */
+  .text-gradient-dark {
+    @apply bg-gradient-to-r from-elegant-100 to-elegant-300 bg-clip-text text-transparent;
   }
   
   /**

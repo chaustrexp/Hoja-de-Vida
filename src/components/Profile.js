@@ -51,12 +51,12 @@ const Profile = () => {
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start lg:items-center">
           {/* Contenido de texto */}
           <div className={`lg:col-span-2 space-y-4 sm:space-y-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-            <p className="text-base sm:text-lg text-elegant-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-elegant-700 dark:text-gray-200 leading-relaxed">
               Aprendiz del programa Tecnólogo en Análisis y Desarrollo de Software del SENA, 
               con sólidos conocimientos en desarrollo web frontend y backend. Me caracterizo 
               por mi responsabilidad, puntualidad y capacidad de trabajo en equipo.
             </p>
-            <p className="text-base sm:text-lg text-elegant-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-elegant-700 dark:text-gray-200 leading-relaxed">
               Busco una oportunidad de contrato de aprendizaje donde pueda aplicar mis 
               conocimientos técnicos, contribuir al crecimiento de la empresa y continuar 
               mi formación profesional en el desarrollo de soluciones digitales innovadoras.
@@ -68,25 +68,25 @@ const Profile = () => {
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-elegant-200 dark:bg-elegant-800 rounded-full flex items-center justify-center flex-shrink-0">
                   <i className="fas fa-graduation-cap text-elegant-600 dark:text-elegant-400 text-sm sm:text-base"></i>
                 </div>
-                <span className="text-sm sm:text-base text-elegant-800 dark:text-gray-300">Formación SENA</span>
+                <span className="text-sm sm:text-base text-elegant-800 dark:text-gray-200">Formación SENA</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-elegant-200 dark:bg-elegant-800 rounded-full flex items-center justify-center flex-shrink-0">
                   <i className="fas fa-code text-elegant-600 dark:text-elegant-400 text-sm sm:text-base"></i>
                 </div>
-                <span className="text-sm sm:text-base text-elegant-800 dark:text-gray-300">Desarrollo Web</span>
+                <span className="text-sm sm:text-base text-elegant-800 dark:text-gray-200">Desarrollo Web</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-elegant-200 dark:bg-elegant-800 rounded-full flex items-center justify-center flex-shrink-0">
                   <i className="fas fa-users text-elegant-600 dark:text-elegant-400 text-sm sm:text-base"></i>
                 </div>
-                <span className="text-sm sm:text-base text-elegant-800 dark:text-gray-300">Trabajo en Equipo</span>
+                <span className="text-sm sm:text-base text-elegant-800 dark:text-gray-200">Trabajo en Equipo</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-elegant-200 dark:bg-elegant-800 rounded-full flex items-center justify-center flex-shrink-0">
                   <i className="fas fa-lightbulb text-elegant-600 dark:text-elegant-400 text-sm sm:text-base"></i>
                 </div>
-                <span className="text-sm sm:text-base text-elegant-800 dark:text-gray-300">Innovación</span>
+                <span className="text-sm sm:text-base text-elegant-800 dark:text-gray-200">Innovación</span>
               </div>
             </div>
           </div>
@@ -102,7 +102,7 @@ const Profile = () => {
                 <div className="text-2xl sm:text-3xl font-bold text-elegant-600 dark:text-elegant-400 mb-1 sm:mb-2">
                   {stat.number}
                 </div>
-                <div className="text-xs sm:text-sm text-elegant-500 dark:text-gray-400 font-medium leading-tight">
+                <div className="text-xs sm:text-sm text-elegant-500 dark:text-gray-300 font-medium leading-tight">
                   {stat.label}
                 </div>
               </div>
