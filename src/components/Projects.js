@@ -103,14 +103,16 @@ const Projects = () => {
       title: 'Portafolio Web Personal',
       description: 'Desarrollo de sitio web personal responsivo utilizando HTML5, CSS3 y JavaScript. Implementación de animaciones, modo oscuro y diseño mobile-first.',
       icon: 'fas fa-globe',
-      technologies: ['HTML', 'CSS', 'JavaScript'],
+      technologies: ['HTML', 'CSS', 'JavaScript', 'Vercel'],
       color: 'from-elegant-400 to-elegant-600',
       features: [
         'Diseño responsivo',
         'Modo claro/oscuro',
         'Animaciones CSS',
         'Optimización SEO'
-      ]
+      ],
+      link: 'https://portafolio-nu-seven-82.vercel.app/',
+      isExternal: true
     },
     {
       title: 'Proyectos Formativos SENA',
