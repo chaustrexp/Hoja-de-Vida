@@ -40,6 +40,21 @@ const Projects = () => {
    */
   const projects = [
     {
+      title: 'HighMed',
+      description: 'Plataforma médica digital con sistema de autenticación y gestión de pacientes. Aplicación web para servicios de salud con interfaz profesional y segura.',
+      icon: 'fas fa-heartbeat',
+      technologies: ['React', 'JavaScript', 'CSS', 'Vercel'],
+      color: 'from-teal-400 to-cyan-600',
+      features: [
+        'Sistema de autenticación',
+        'Gestión de pacientes',
+        'Historial médico',
+        'Interfaz profesional'
+      ],
+      link: 'https://highmed.vercel.app/auth',
+      isExternal: true
+    },
+    {
       title: 'Banco Express',
       description: 'Aplicación web de banca digital con interfaz moderna y funcionalidades completas de gestión financiera. Sistema seguro con autenticación y transacciones.',
       icon: 'fas fa-university',
@@ -55,6 +70,21 @@ const Projects = () => {
       isExternal: true
     },
     {
+      title: 'BakerySoft System',
+      description: 'Sistema de gestión para panadería con interfaz moderna y funcionalidades completas. Aplicación web para administrar productos, ventas e inventario de panadería.',
+      icon: 'fas fa-bread-slice',
+      technologies: ['React', 'JavaScript', 'CSS', 'Vercel'],
+      color: 'from-orange-400 to-red-500',
+      features: [
+        'Gestión de productos',
+        'Control de inventario',
+        'Sistema de ventas',
+        'Interfaz intuitiva'
+      ],
+      link: 'https://bakerysoft-system.vercel.app/',
+      isExternal: true
+    },
+    {
       title: 'Mini Página Web',
       description: 'Sitio web minimalista y elegante con diseño moderno. Proyecto enfocado en la simplicidad y experiencia de usuario optimizada.',
       icon: 'fas fa-window-maximize',
@@ -67,21 +97,6 @@ const Projects = () => {
         'Optimización móvil'
       ],
       link: 'https://mini-pagina.vercel.app/',
-      isExternal: true
-    },
-    {
-      title: 'Bakery Soft',
-      description: 'Sistema de gestión para panadería con interfaz moderna y funcionalidades completas. Aplicación web para administrar productos, ventas e inventario de panadería.',
-      icon: 'fas fa-bread-slice',
-      technologies: ['React', 'JavaScript', 'CSS', 'Vercel'],
-      color: 'from-orange-400 to-red-500',
-      features: [
-        'Gestión de productos',
-        'Control de inventario',
-        'Sistema de ventas',
-        'Interfaz intuitiva'
-      ],
-      link: 'https://bakery-manager-16yr8mwly-cristians-projects-6060941c.vercel.app/',
       isExternal: true
     },
     {
@@ -224,11 +239,11 @@ const Projects = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-elegant-600 dark:text-elegant-300 mb-1 sm:mb-2">18+</div>
+                <div className="text-2xl sm:text-3xl font-bold text-elegant-600 dark:text-elegant-300 mb-1 sm:mb-2">19+</div>
                 <div className="text-xs sm:text-sm text-elegant-600 dark:text-gray-300">Proyectos Completados</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-elegant-600 dark:text-elegant-300 mb-1 sm:mb-2">650+</div>
+                <div className="text-2xl sm:text-3xl font-bold text-elegant-600 dark:text-elegant-300 mb-1 sm:mb-2">700+</div>
                 <div className="text-xs sm:text-sm text-elegant-600 dark:text-gray-300">Horas de Código</div>
               </div>
               <div className="text-center">
