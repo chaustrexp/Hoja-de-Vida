@@ -59,7 +59,7 @@ function App() {
   // ===== RENDER PRINCIPAL =====
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-gray-900 text-dark-900 dark:text-white transition-colors duration-300">
+      <div className="min-h-screen bg-elegant-50 dark:bg-elegant-950 text-elegant-900 dark:text-elegant-50 transition-colors duration-300">
         <Navbar />
         <Hero />
         <Profile />

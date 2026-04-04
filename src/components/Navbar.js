@@ -88,8 +88,8 @@ const Navbar = () => {
       {/* Navbar principal */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl border-b border-elegant-200/20 dark:border-gray-700/20' 
-          : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg'
+          ? 'bg-elegant-50/95 dark:bg-elegant-950/95 backdrop-blur-xl shadow-2xl border-b border-elegant-200/20 dark:border-elegant-800/20' 
+          : 'bg-elegant-50/80 dark:bg-elegant-950/80 backdrop-blur-lg'
       }`}>
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
           <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
@@ -198,7 +198,7 @@ const Navbar = () => {
         <div className={`lg:hidden transition-all duration-500 ease-in-out ${
           isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         } overflow-hidden`}>
-          <div className="mx-3 sm:mx-4 mb-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-elegant-200/20 dark:border-gray-700/20">
+          <div className="mx-3 sm:mx-4 mb-4 bg-elegant-50/95 dark:bg-elegant-800/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-elegant-200/20 dark:border-elegant-800/20">
             <div className="p-3 sm:p-4 space-y-2">
               {navItems.map((item, index) => (
                 <button

@@ -19,7 +19,7 @@
 @tailwind utilities;
 
 /* ===== GOOGLE FONTS IMPORT ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 /* ===== BASE LAYER - ESTILOS FUNDAMENTALES ===== */
 @layer base {
@@ -36,7 +36,7 @@
    * Establece la fuente principal del proyecto
    */
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
   }
 }
 

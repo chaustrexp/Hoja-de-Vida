@@ -410,7 +410,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="inicio" className="min-h-screen flex items-center pt-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-elegant-50 dark:from-gray-900 dark:to-gray-800">
+    <section id="inicio" className="min-h-screen flex items-center pt-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-elegant-50 to-elegant-100 dark:from-elegant-950 dark:to-elegant-900">
       <div className="max-w-7xl mx-auto w-full">
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Contenido de texto */}

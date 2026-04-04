@@ -40,10 +40,10 @@ const Projects = () => {
    */
   const projects = [
     {
-      title: 'HighMed',
+      title: 'HighMed System',
       description: 'Plataforma médica digital con sistema de autenticación y gestión de pacientes. Aplicación web para servicios de salud con interfaz profesional y segura.',
       icon: 'fas fa-heartbeat',
-      technologies: ['React', 'JavaScript', 'CSS', 'Vercel'],
+      technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Vercel'],
       color: 'from-teal-400 to-cyan-600',
       features: [
         'Sistema de autenticación',
@@ -51,27 +51,12 @@ const Projects = () => {
         'Historial médico',
         'Interfaz profesional'
       ],
-      link: 'https://highmed.vercel.app/auth',
+      link: 'https://highmed.vercel.app',
       isExternal: true
     },
     {
-      title: 'Banco Express',
-      description: 'Aplicación web de banca digital con interfaz moderna y funcionalidades completas de gestión financiera. Sistema seguro con autenticación y transacciones.',
-      icon: 'fas fa-university',
-      technologies: ['React', 'JavaScript', 'CSS', 'Vercel'],
-      color: 'from-blue-400 to-blue-600',
-      features: [
-        'Sistema de autenticación',
-        'Gestión de cuentas',
-        'Transferencias seguras',
-        'Dashboard interactivo'
-      ],
-      link: 'https://banco-express-qxkz.vercel.app/',
-      isExternal: true
-    },
-    {
-      title: 'BakerySoft System',
-      description: 'Sistema de gestión para panadería con interfaz moderna y funcionalidades completas. Aplicación web para administrar productos, ventas e inventario de panadería.',
+      title: 'Sistema de Panadería',
+      description: 'Sistema de gestión integral para panaderías con control de inventarios, ventas y administración de productos clave. Optimizado para uso comercial.',
       icon: 'fas fa-bread-slice',
       technologies: ['React', 'JavaScript', 'CSS', 'Vercel'],
       color: 'from-orange-400 to-red-500',
@@ -81,64 +66,53 @@ const Projects = () => {
         'Sistema de ventas',
         'Interfaz intuitiva'
       ],
-      link: 'https://bakerysoft-system.vercel.app/',
+      link: 'https://sistema-panaderia.vercel.app/',
       isExternal: true
     },
     {
-      title: 'Mini Página Web',
-      description: 'Sitio web minimalista y elegante con diseño moderno. Proyecto enfocado en la simplicidad y experiencia de usuario optimizada.',
-      icon: 'fas fa-window-maximize',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'Vercel'],
-      color: 'from-purple-400 to-purple-600',
+      title: 'Banco Express',
+      description: 'Aplicación de banca digital con transacciones seguras, gestión de ahorros y un dashboard financiero interactivo con gráficas dinámicas.',
+      icon: 'fas fa-university',
+      technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Vercel'],
+      color: 'from-blue-400 to-blue-600',
       features: [
-        'Diseño minimalista',
-        'Carga rápida',
-        'Interfaz intuitiva',
-        'Optimización móvil'
+        'Dashboard financiero',
+        'Gestión de ahorros',
+        'Transferencias seguras',
+        'Control de perfil'
       ],
-      link: 'https://mini-pagina.vercel.app/',
+      link: 'https://banco-express.vercel.app',
       isExternal: true
     },
     {
-      title: 'Portafolio Web Personal',
-      description: 'Desarrollo de sitio web personal responsivo utilizando HTML5, CSS3 y JavaScript. Implementación de animaciones, modo oscuro y diseño mobile-first.',
-      icon: 'fas fa-globe',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'Vercel'],
+      title: 'Gestión Fármaco',
+      description: 'Diseño integral para control estricto de inventarios farmacéuticos, alertas de vencimientos y dispensación segura de medicamentos.',
+      icon: 'fas fa-pills',
+      technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Vercel'],
+      color: 'from-green-400 to-emerald-600',
+      features: [
+        'Control de inventario',
+        'Avisos de vencimiento',
+        'Autenticación segura',
+        'Reportes dinámicos'
+      ],
+      link: 'https://gestion-farmaco-xtsf.vercel.app/auth',
+      isExternal: true
+    },
+    {
+      title: 'Portafolio Personal',
+      description: 'Mi portafolio personal interactivo con diseño responsivo, modo oscuro y optimizado para presentar mis mejores desarrollos de software.',
+      icon: 'fas fa-laptop-code',
+      technologies: ['HTML', 'Tailwind CSS', 'JavaScript', 'Vercel'],
       color: 'from-elegant-400 to-elegant-600',
       features: [
         'Diseño responsivo',
         'Modo claro/oscuro',
         'Animaciones CSS',
-        'Optimización SEO'
+        'Optimización UI/UX'
       ],
       link: 'https://portafolio-nu-seven-82.vercel.app/',
       isExternal: true
-    },
-    {
-      title: 'Proyectos Formativos SENA',
-      description: 'Desarrollo de múltiples aplicaciones web como parte de la formación académica, incluyendo sistemas de gestión, calculadoras y juegos interactivos.',
-      icon: 'fas fa-code',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'Git'],
-      color: 'from-elegant-500 to-elegant-700',
-      features: [
-        'Sistemas CRUD',
-        'Validación de formularios',
-        'Almacenamiento local',
-        'Control de versiones'
-      ]
-    },
-    {
-      title: 'Aplicaciones Interactivas',
-      description: 'Creación de aplicaciones web interactivas con JavaScript puro, enfocadas en la experiencia de usuario y funcionalidades dinámicas.',
-      icon: 'fas fa-mobile-alt',
-      technologies: ['JavaScript', 'DOM', 'APIs'],
-      color: 'from-elegant-300 to-elegant-500',
-      features: [
-        'Manipulación del DOM',
-        'Consumo de APIs',
-        'Eventos interactivos',
-        'Almacenamiento de datos'
-      ]
     }
   ];
 

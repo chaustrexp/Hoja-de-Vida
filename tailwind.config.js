@@ -10,16 +10,17 @@ module.exports = {
       colors: {
         // Paleta de Grises Profesional - Colores principales del proyecto
         elegant: {
-          50: '#FFFFFF',   // Blanco Puro
-          100: '#F5F5F5',  // Gris muy claro
-          200: '#E0E0E0',  // Gris claro intermedio
-          300: '#C0C0C0',  // Gris Claro
-          400: '#A0A0A0',  // Gris intermedio
-          500: '#8C8C8C',  // Gris Medio
-          600: '#707070',  // Gris medio-oscuro
-          700: '#424242',  // Gris Carbón
-          800: '#2A2A2A',  // Gris muy oscuro
-          900: '#000000'   // Negro Intenso
+          50: '#F7FAFC',   // Blanco Nieve (Fondo Principal)
+          100: '#EDF2F7',  // Gris muy claro (Fondo Secundario)
+          200: '#E2E8F0',  // Bordes sutiles
+          300: '#CBD5E1',  // Bordes definidos
+          400: '#A0AEC0',  // Elementos decorativos
+          500: '#718096',  // Texto terciario
+          600: '#4A5568',  // Elementos interactivos
+          700: '#2D3748',  // Texto secundario
+          800: '#1A202C',  // Grafito Profundo (Títulos y principal)
+          900: '#1A202C',   // Grafito Profundo (Títulos y principal)
+          950: '#111827'    // Deeper Dark for BG
         },
         primary: {
           50: '#f8fafc',
@@ -55,7 +56,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        'inter': ['Inter', 'system-ui', 'sans-serif']
+        'manrope': ['Manrope', 'system-ui', 'sans-serif']
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
