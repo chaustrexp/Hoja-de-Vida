@@ -176,9 +176,10 @@ const Hero = () => {
       const skills = [
         { name: 'HTML & CSS', level: 85 },
         { name: 'JavaScript', level: 75 },
+        { name: 'React & Tailwind', level: 80 },
         { name: 'Git & GitHub', level: 80 },
-        { name: 'Diseño Web', level: 70 },
-        { name: 'Herramientas Ofimáticas', level: 90 }
+        { name: 'Stitch AI', level: 85 },
+        { name: 'Antigravity Code Editor', level: 85 }
       ];
       
       skills.forEach(skill => {
@@ -249,9 +250,9 @@ const Hero = () => {
         },
         {
           name: 'Portafolio Personal',
-          description: 'Sitio web personal responsivo con modo oscuro, animaciones CSS y diseño mobile-first. Optimizado para SEO.',
-          tech: 'HTML, CSS, JavaScript, Tailwind CSS',
-          url: 'En desarrollo'
+          description: 'Portafolio interactivo minimalista rediseñado con React y Tailwind CSS, impulsado por herramientas de IA.',
+          tech: 'React, Tailwind CSS, Vercel, Stitch AI, Antigravity',
+          url: 'portafolio-nuevo-hazel.vercel.app'
         }
       ];
       

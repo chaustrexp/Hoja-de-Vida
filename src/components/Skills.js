@@ -41,6 +41,11 @@ const Skills = () => {
   const technicalSkills = [
     { name: 'HTML & CSS', level: 85, icon: 'fab fa-html5', color: 'from-elegant-500 to-elegant-700' },
     { name: 'JavaScript', level: 75, icon: 'fab fa-js-square', color: 'from-elegant-400 to-elegant-600' },
+    { name: 'React', level: 70, icon: 'fab fa-react', color: 'from-elegant-500 to-elegant-700' },
+    { name: 'PHP', level: 80, icon: 'fab fa-php', color: 'from-elegant-600 to-elegant-800' },
+    { name: 'Laravel', level: 75, icon: 'fab fa-laravel', color: 'from-elegant-400 to-elegant-600' },
+    { name: 'MySQL', level: 80, icon: 'fas fa-database', color: 'from-elegant-500 to-elegant-700' },
+    { name: 'PostgreSQL', level: 50, icon: 'fas fa-database', color: 'from-elegant-400 to-elegant-600' },
     { name: 'Git & GitHub', level: 80, icon: 'fab fa-git-alt', color: 'from-elegant-600 to-elegant-800' },
     { name: 'Diseño Web', level: 70, icon: 'fas fa-palette', color: 'from-elegant-300 to-elegant-500' },
     { name: 'Herramientas Ofimáticas', level: 90, icon: 'fas fa-file-alt', color: 'from-elegant-500 to-elegant-700' }
@@ -126,13 +131,13 @@ const Skills = () => {
           Habilidades
         </h2>
 
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div ref={ref} className="flex flex-col gap-12 lg:gap-16">
           {/* Habilidades Técnicas */}
           <div>
-            <h3 className={`text-xl sm:text-2xl font-semibold text-elegant-600 dark:text-elegant-400 mb-6 sm:mb-8 text-center lg:text-left ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            <h3 className={`text-xl sm:text-2xl font-semibold text-elegant-600 dark:text-elegant-400 mb-6 sm:mb-8 text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
               Habilidades Técnicas
             </h3>
-            <div className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {technicalSkills.map((skill, index) => (
                 <SkillBar key={skill.name} skill={skill} index={index} />
               ))}
@@ -141,10 +146,10 @@ const Skills = () => {
 
           {/* Habilidades Blandas */}
           <div>
-            <h3 className={`text-xl sm:text-2xl font-semibold text-elegant-600 dark:text-elegant-400 mb-6 sm:mb-8 text-center lg:text-left ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            <h3 className={`text-xl sm:text-2xl font-semibold text-elegant-600 dark:text-elegant-400 mb-6 sm:mb-8 text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
               Habilidades Blandas
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6">
               {softSkills.map((skill, index) => (
                 <SoftSkillCard key={skill.name} skill={skill} index={index} />
               ))}
@@ -162,11 +167,18 @@ const Skills = () => {
               { name: 'HTML5', icon: 'fab fa-html5', color: 'text-orange-500 dark:text-orange-400' },
               { name: 'CSS3', icon: 'fab fa-css3-alt', color: 'text-blue-500 dark:text-blue-400' },
               { name: 'JavaScript', icon: 'fab fa-js-square', color: 'text-yellow-500 dark:text-yellow-400' },
+              { name: 'React', icon: 'fab fa-react', color: 'text-blue-400 dark:text-blue-300' },
+              { name: 'PHP', icon: 'fab fa-php', color: 'text-indigo-500 dark:text-indigo-400' },
+              { name: 'Laravel', icon: 'fab fa-laravel', color: 'text-red-600 dark:text-red-500' },
+              { name: 'MySQL', icon: 'fas fa-database', color: 'text-blue-800 dark:text-blue-500' },
+              { name: 'PostgreSQL', icon: 'fas fa-database', color: 'text-blue-500 dark:text-blue-300' },
               { name: 'Git', icon: 'fab fa-git-alt', color: 'text-red-500 dark:text-red-400' },
               { name: 'GitHub', icon: 'fab fa-github', color: 'text-gray-700 dark:text-gray-200' },
               { name: 'VS Code', icon: 'fas fa-code', color: 'text-blue-600 dark:text-blue-400' },
               { name: 'Figma', icon: 'fab fa-figma', color: 'text-purple-500 dark:text-purple-400' },
-              { name: 'Bootstrap', icon: 'fab fa-bootstrap', color: 'text-purple-600 dark:text-purple-400' }
+              { name: 'Bootstrap', icon: 'fab fa-bootstrap', color: 'text-purple-600 dark:text-purple-400' },
+              { name: 'Antigravity IDE', icon: 'fas fa-terminal', color: 'text-green-500 dark:text-green-400' },
+              { name: 'Stitch AI', icon: 'fas fa-brain', color: 'text-pink-500 dark:text-pink-400' }
             ].map((tech, index) => (
               <div
                 key={tech.name}

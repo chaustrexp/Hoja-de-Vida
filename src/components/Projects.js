@@ -101,9 +101,9 @@ const Projects = () => {
     },
     {
       title: 'Portafolio Personal',
-      description: 'Mi portafolio personal interactivo con diseño responsivo, modo oscuro y optimizado para presentar mis mejores desarrollos de software.',
+      description: 'Portafolio interactivo minimalista rediseñado con React y Tailwind CSS, impulsado por herramientas avanzadas de IA para presentar mi trayectoria profesional.',
       icon: 'fas fa-laptop-code',
-      technologies: ['HTML', 'Tailwind CSS', 'JavaScript', 'Vercel'],
+      technologies: ['React', 'Tailwind CSS', 'JavaScript', 'Vercel', 'Stitch AI', 'Antigravity'],
       color: 'from-elegant-400 to-elegant-600',
       features: [
         'Diseño responsivo',
@@ -111,7 +111,7 @@ const Projects = () => {
         'Animaciones CSS',
         'Optimización UI/UX'
       ],
-      link: 'https://portafolio-nu-seven-82.vercel.app/',
+      link: 'https://portafolio-nuevo-hazel.vercel.app/',
       isExternal: true
     }
   ];
@@ -141,7 +141,7 @@ const Projects = () => {
             <i className="fas fa-external-link-alt text-sm ml-2 opacity-70"></i>
           )}
         </h3>
-        
+
         <p className="text-sm sm:text-base text-elegant-600 dark:text-gray-300 leading-relaxed">
           {project.description}
         </p>
@@ -202,14 +202,14 @@ const Projects = () => {
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-elegant-500 to-elegant-700 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
               <i className="fas fa-graduation-cap text-xl sm:text-2xl text-white"></i>
             </div>
-            
+
             <h3 className="text-xl sm:text-2xl font-semibold text-elegant-900 dark:text-white mb-3 sm:mb-4">
               Experiencia Académica SENA
             </h3>
-            
+
             <p className="text-sm sm:text-base text-elegant-600 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6 max-w-3xl mx-auto">
-              Durante mi formación en el SENA, he participado en múltiples proyectos formativos que me han 
-              permitido desarrollar habilidades prácticas en programación, trabajo en equipo y resolución 
+              Durante mi formación en el SENA, he participado en múltiples proyectos formativos que me han
+              permitido desarrollar habilidades prácticas en programación, trabajo en equipo y resolución
               de problemas. Cada proyecto ha sido una oportunidad de aprendizaje y crecimiento profesional.
             </p>
 
