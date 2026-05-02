@@ -35,11 +35,62 @@ const Hero = () => {
 
   // ===== FUNCIONES DE INTERACCIÓN =====
   /**
+   * Obtiene los datos de una imagen en formato base64
+   * @param {string} url - URL de la imagen
+   * @returns {Promise<string>} - Datos de la imagen en base64
+   */
+  const getImageData = (url) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        // Calcular dimensiones para un cuadrado perfecto (centrado)
+        const size = Math.min(img.width, img.height);
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        
+        // Crear máscara circular
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.clip();
+        
+        // Dibujar la imagen recortada y centrada
+        ctx.drawImage(
+          img,
+          (img.width - size) / 2,
+          (img.height - size) / 2,
+          size,
+          size,
+          0,
+          0,
+          size,
+          size
+        );
+        
+        // Devolver como PNG para mantener la transparencia del recorte
+        resolve(canvas.toDataURL('image/png'));
+      };
+      img.onerror = () => reject(new Error(`No se pudo cargar la imagen: ${url}`));
+      img.src = url;
+    });
+  };
+
+  /**
    * Maneja la descarga del CV
    * Genera un PDF profesional de 2 páginas con jsPDF
    */
-  const handleDownloadCV = () => {
+  const handleDownloadCV = async () => {
     try {
+      // Intentar cargar la foto de perfil
+      let profileImgData = null;
+      try {
+        profileImgData = await getImageData('/img/foto de perfil mientras.jpg');
+      } catch (imgError) {
+        console.warn('No se pudo cargar la foto de perfil para el PDF:', imgError);
+      }
+
       // Crear nuevo documento PDF con configuración profesional
       const doc = new jsPDF({
         orientation: 'portrait',
@@ -47,334 +98,351 @@ const Hero = () => {
         format: 'a4'
       });
       
-      // Configurar colores (RGB)
+      // Configurar colores (RGB) - Paleta Premium
       const colors = {
-        primary: [42, 42, 42],        // Gris oscuro para títulos
-        secondary: [70, 70, 70],      // Gris medio para texto
-        accent: [100, 100, 100],      // Gris claro para detalles
-        blue: [37, 99, 235],          // Azul para acentos
-        lightGray: [245, 245, 245],   // Fondo claro
-        white: [255, 255, 255]        // Blanco
+        primary: [26, 32, 44],       // Azul muy oscuro para texto principal
+        secondary: [74, 85, 104],    // Gris para texto secundario
+        accent: [37, 99, 235],       // Azul vibrante para acentos
+        sidebar: [248, 250, 252],    // Fondo sidebar (Slate 50)
+        white: [255, 255, 255],
+        line: [226, 232, 240]        // Color para líneas divisorias
       };
       
       // =================== PÁGINA 1 ===================
       
-      // === ENCABEZADO PRINCIPAL ===
-      doc.setFillColor(...colors.primary);
-      doc.rect(0, 0, 210, 50, 'F');
+      // --- SIDEBAR (IZQUIERDA) ---
+      doc.setFillColor(...colors.sidebar);
+      doc.rect(0, 0, 75, 297, 'F');
       
-      // Nombre en blanco sobre fondo oscuro
+      // Foto de perfil
+      if (profileImgData) {
+        // Círculo blanco de fondo (borde)
+        doc.setFillColor(...colors.white);
+        doc.circle(37.5, 35, 22, 'F');
+        // Imagen circular
+        doc.addImage(profileImgData, 'PNG', 17.5, 15, 40, 40);
+      }
+      
+      let sideY = 75;
+      
+      // Título Sección Sidebar: CONTACTO
       doc.setFont('helvetica', 'bold');
-      doc.setFontSize(28);
-      doc.setTextColor(...colors.white);
-      doc.text('CRISTIAN CONTRERAS', 20, 25);
-      
-      // Título profesional
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(16);
-      doc.setTextColor(200, 200, 200);
-      doc.text('Tecnólogo en Análisis y Desarrollo de Software', 20, 35);
-      
-      // Información de contacto
-      doc.setFontSize(10);
-      doc.setTextColor(220, 220, 220);
-      doc.text('Cucuta, Norte de Santander', 20, 42);
-      doc.text('+57 3229615724', 20, 46);
-      doc.text('cristianchaustre90@gmail.com', 110, 42);
-      doc.text('LinkedIn: /cristian-contreras', 110, 46);
-      
-      let yPos = 65;
-      
-      // === PERFIL PROFESIONAL ===
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(14);
-      doc.setTextColor(...colors.primary);
-      doc.text('PERFIL PROFESIONAL', 20, yPos);
-      
-      // Línea decorativa
-      doc.setDrawColor(...colors.blue);
-      doc.setLineWidth(2);
-      doc.line(20, yPos + 2, 70, yPos + 2);
-      
-      yPos += 10;
-      doc.setFont('helvetica', 'normal');
       doc.setFontSize(11);
-      doc.setTextColor(...colors.secondary);
-      
-      const perfilText = 'Aprendiz del programa Tecnólogo en Análisis y Desarrollo de Software del SENA, con sólidos conocimientos en desarrollo web frontend y backend. Me caracterizo por mi responsabilidad, puntualidad y capacidad de trabajo en equipo. Busco una oportunidad de contrato de aprendizaje donde pueda aplicar mis conocimientos técnicos y contribuir al crecimiento de la empresa.';
-      const perfilLines = doc.splitTextToSize(perfilText, 170);
-      doc.text(perfilLines, 20, yPos);
-      yPos += perfilLines.length * 5 + 15;
-      
-      // === FORMACIÓN ACADÉMICA ===
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(14);
-      doc.setTextColor(...colors.primary);
-      doc.text('FORMACIÓN ACADÉMICA', 20, yPos);
-      
-      doc.setDrawColor(...colors.blue);
-      doc.setLineWidth(2);
-      doc.line(20, yPos + 2, 75, yPos + 2);
-      yPos += 12;
-      
-      // Formación 1
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(12);
-      doc.setTextColor(...colors.primary);
-      doc.text('Tecnólogo en Análisis y Desarrollo de Software', 20, yPos);
-      yPos += 6;
-      
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(10);
-      doc.setTextColor(...colors.secondary);
-      doc.text('SENA - Servicio Nacional de Aprendizaje', 20, yPos);
       doc.setTextColor(...colors.accent);
-      doc.text('2024 - 2027 (En formación)', 140, yPos);
-      yPos += 10;
+      doc.text('CONTACTO', 15, sideY);
+      doc.setDrawColor(...colors.accent);
+      doc.setLineWidth(0.5);
+      doc.line(15, sideY + 2, 60, sideY + 2);
       
-      // Formación 2
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(12);
-      doc.setTextColor(...colors.primary);
-      doc.text('Técnico en Sistemas', 20, yPos);
-      yPos += 6;
-      
+      sideY += 10;
       doc.setFont('helvetica', 'normal');
-      doc.setFontSize(10);
+      doc.setFontSize(9);
       doc.setTextColor(...colors.secondary);
-      doc.text('Institución Educativa Eustorgio Colmenares Baptista', 20, yPos);
-      doc.setTextColor(...colors.accent);
-      doc.text('2022 - 2023', 140, yPos);
-      yPos += 10;
       
-      // Formación 3
+      const contactInfo = [
+        { icon: 'Ubicación:', text: 'Cúcuta, N. de Santander' },
+        { icon: 'Teléfono:', text: '+57 3229615724' },
+        { icon: 'Correo:', text: 'cristianchaustre90@gmail.com' },
+        { icon: 'LinkedIn:', text: 'in/cristian-contreras-9a4999343' },
+        { icon: 'GitHub:', text: 'github.com/chaustrexp' }
+      ];
+      
+      contactInfo.forEach(info => {
+        doc.setFont('helvetica', 'bold');
+        doc.text(info.icon, 15, sideY);
+        sideY += 4;
+        doc.setFont('helvetica', 'normal');
+        doc.text(info.text, 15, sideY);
+        sideY += 7;
+      });
+      
+      sideY += 5;
+      
+      // Título Sección Sidebar: SKILLS TÉCNICAS
       doc.setFont('helvetica', 'bold');
-      doc.setFontSize(12);
-      doc.setTextColor(...colors.primary);
-      doc.text('Bachiller Académico', 20, yPos);
-      yPos += 6;
-      
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(10);
-      doc.setTextColor(...colors.secondary);
-      doc.text('Institución Educativa Eustorgio Colmenares Baptista', 20, yPos);
+      doc.setFontSize(11);
       doc.setTextColor(...colors.accent);
-      doc.text('2018 - 2023', 140, yPos);
-      yPos += 15;
+      doc.text('HABILIDADES TÉCNICAS', 15, sideY);
+      doc.line(15, sideY + 2, 60, sideY + 2);
       
-      // === HABILIDADES TÉCNICAS ===
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(14);
-      doc.setTextColor(...colors.primary);
-      doc.text('HABILIDADES TÉCNICAS', 20, yPos);
-      
-      doc.setDrawColor(...colors.blue);
-      doc.setLineWidth(2);
-      doc.line(20, yPos + 2, 80, yPos + 2);
-      yPos += 12;
-      
-      const skills = [
+      sideY += 10;
+      const techSkills = [
         { name: 'HTML & CSS', level: 85 },
         { name: 'JavaScript', level: 75 },
         { name: 'React & Tailwind', level: 80 },
-        { name: 'Git & GitHub', level: 80 },
-        { name: 'Stitch AI', level: 85 },
-        { name: 'Antigravity Code Editor', level: 85 }
+        { name: 'PHP & Laravel', level: 78 },
+        { name: 'MySQL / SQL', level: 80 },
+        { name: 'Git & GitHub', level: 85 }
       ];
       
-      skills.forEach(skill => {
-        doc.setFont('helvetica', 'normal');
+      techSkills.forEach(skill => {
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8.5);
+        doc.setTextColor(...colors.primary);
+        doc.text(skill.name, 15, sideY);
+        
+        // Barra de progreso minimalista
+        const barW = 45;
+        const barH = 1.5;
+        doc.setFillColor(226, 232, 240);
+        doc.rect(15, sideY + 2, barW, barH, 'F');
+        doc.setFillColor(...colors.accent);
+        doc.rect(15, sideY + 2, (barW * skill.level) / 100, barH, 'F');
+        
+        sideY += 10;
+      });
+      
+      sideY += 5;
+      
+      // Título Sección Sidebar: SOFT SKILLS
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(11);
+      doc.setTextColor(...colors.accent);
+      doc.text('HABILIDADES BLANDAS', 15, sideY);
+      doc.line(15, sideY + 2, 60, sideY + 2);
+      
+      sideY += 10;
+      const softSkills = ['Trabajo en Equipo', 'Comunicación', 'Liderazgo', 'Adaptabilidad', 'Puntualidad', 'Creatividad'];
+      
+      doc.setFontSize(9);
+      doc.setTextColor(...colors.secondary);
+      softSkills.forEach(skill => {
+        doc.setFillColor(...colors.accent);
+        doc.circle(17, sideY - 1, 0.8, 'F');
+        doc.text(skill, 20, sideY);
+        sideY += 7;
+      });
+      
+      // --- CONTENIDO PRINCIPAL (DERECHA) ---
+      let mainY = 30;
+      const mainX = 85;
+      
+      // Nombre y Título
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(32);
+      doc.setTextColor(...colors.primary);
+      doc.text('CRISTIAN', mainX, mainY);
+      mainY += 12;
+      doc.text('CONTRERAS', mainX, mainY);
+      
+      mainY += 8;
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(14);
+      doc.setTextColor(...colors.accent);
+      doc.text('Tecnólogo en Análisis y Desarrollo de Software', mainX, mainY);
+      
+      mainY += 15;
+      
+      // PERFIL PROFESIONAL
+      doc.setFontSize(12);
+      doc.setTextColor(...colors.primary);
+      doc.text('PERFIL PROFESIONAL', mainX, mainY);
+      doc.setDrawColor(...colors.accent);
+      doc.setLineWidth(0.8);
+      doc.line(mainX, mainY + 2, mainX + 40, mainY + 2);
+      
+      mainY += 10;
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(10.5);
+      doc.setTextColor(...colors.secondary);
+      const perfilText = 'Aprendiz del programa Tecnólogo en Análisis y Desarrollo de Software del SENA, con sólidos conocimientos en desarrollo web frontend y backend. Me caracterizo por mi responsabilidad, puntualidad y capacidad de trabajo en equipo. Busco una oportunidad de contrato de aprendizaje donde pueda aplicar mis conocimientos técnicos y contribuir al crecimiento de la empresa.';
+      const perfilLines = doc.splitTextToSize(perfilText, 110);
+      doc.text(perfilLines, mainX, mainY);
+      
+      mainY += perfilLines.length * 5 + 15;
+      
+      // FORMACIÓN ACADÉMICA (TIMELINE)
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(12);
+      doc.setTextColor(...colors.primary);
+      doc.text('FORMACIÓN ACADÉMICA', mainX, mainY);
+      
+      // Punto decorativo
+      doc.setFillColor(...colors.accent);
+      doc.circle(mainX - 3, mainY - 1, 1, 'F');
+      
+      mainY += 12;
+      
+      const education = [
+        {
+          title: 'Tecnólogo en Análisis y Desarrollo de Software',
+          inst: 'SENA - Servicio Nacional de Aprendizaje',
+          date: '2024 - 2027 (En formación)'
+        },
+        {
+          title: 'Técnico en Sistemas',
+          inst: 'I.E. Eustorgio Colmenares Baptista',
+          date: '2022 - 2023'
+        },
+        {
+          title: 'Bachiller Académico',
+          inst: 'I.E. Eustorgio Colmenares Baptista',
+          date: '2018 - 2023'
+        }
+      ];
+      
+      // Dibujar línea de tiempo
+      doc.setDrawColor(...colors.line);
+      doc.setLineWidth(0.5);
+      doc.line(mainX + 2, mainY - 5, mainX + 2, mainY + (education.length * 15) - 10);
+      
+      education.forEach((edu, index) => {
+        // Punto de la línea de tiempo
+        doc.setFillColor(...colors.accent);
+        doc.circle(mainX + 2, mainY - 1, 1.5, 'F');
+        
+        doc.setFont('helvetica', 'bold');
         doc.setFontSize(11);
         doc.setTextColor(...colors.primary);
-        doc.text(skill.name, 20, yPos);
+        doc.text(edu.title, mainX + 8, mainY);
         
-        // Barra de progreso
-        const barWidth = 50;
-        const barHeight = 4;
-        const progressWidth = (barWidth * skill.level) / 100;
-        
-        // Fondo de la barra
-        doc.setFillColor(230, 230, 230);
-        doc.rect(100, yPos - 3, barWidth, barHeight, 'F');
-        
-        // Progreso de la barra
-        doc.setFillColor(...colors.blue);
-        doc.rect(100, yPos - 3, progressWidth, barHeight, 'F');
-        
-        // Porcentaje
-        doc.setFontSize(10);
+        mainY += 5;
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(9);
         doc.setTextColor(...colors.accent);
-        doc.text(`${skill.level}%`, 155, yPos);
+        doc.text(edu.inst, mainX + 8, mainY);
         
-        yPos += 10;
+        doc.setFontSize(8.5);
+        doc.setTextColor(...colors.secondary);
+        doc.text(edu.date, mainX + 110, mainY - 5, { align: 'right' });
+        
+        mainY += 12;
+      });
+      
+      mainY += 5;
+      
+      // LOGROS ACADÉMICOS
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(12);
+      doc.setTextColor(...colors.primary);
+      doc.text('LOGROS Y MÉRITOS', mainX, mainY);
+      doc.circle(mainX - 3, mainY - 1, 1, 'F');
+      
+      mainY += 10;
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(10);
+      doc.setTextColor(...colors.secondary);
+      
+      const achievements = [
+        'Desarrollo de +19 proyectos formativos de alta complejidad',
+        '+700 horas de código documentadas en diversas tecnologías',
+        'Dominio de metodologías ágiles y control de versiones',
+        'Liderazgo técnico en proyectos colaborativos de clase'
+      ];
+      
+      achievements.forEach(ach => {
+        doc.setFillColor(...colors.accent);
+        doc.rect(mainX, mainY - 3, 1.5, 1.5, 'F');
+        doc.text(ach, mainX + 5, mainY);
+        mainY += 7;
       });
       
       // Pie de página 1
       doc.setFontSize(8);
-      doc.setTextColor(...colors.accent);
-      doc.text('Página 1 de 2', 180, 285);
+      doc.setTextColor(...colors.secondary);
+      doc.text('Página 1 de 2', 185, 285);
       
       // =================== PÁGINA 2 ===================
       doc.addPage();
-      yPos = 30;
+      let yPos = 25;
       
-      // === PROYECTOS DESTACADOS ===
+      // Encabezado Página 2
+      doc.setFillColor(...colors.primary);
+      doc.rect(0, 0, 210, 15, 'F');
       doc.setFont('helvetica', 'bold');
-      doc.setFontSize(14);
+      doc.setFontSize(10);
+      doc.setTextColor(...colors.white);
+      doc.text('CRISTIAN CONTRERAS - PORTAFOLIO DE PROYECTOS', 105, 9.5, { align: 'center' });
+      
+      // PROYECTOS DESTACADOS
+      doc.setFontSize(16);
       doc.setTextColor(...colors.primary);
       doc.text('PROYECTOS DESTACADOS', 20, yPos);
-      
-      doc.setDrawColor(...colors.blue);
-      doc.setLineWidth(2);
-      doc.line(20, yPos + 2, 85, yPos + 2);
+      doc.setDrawColor(...colors.accent);
+      doc.setLineWidth(1);
+      doc.line(20, yPos + 2, 90, yPos + 2);
       yPos += 15;
       
       const projects = [
         {
+          name: 'HighMed System',
+          description: 'Plataforma médica digital avanzada con gestión de historias clínicas y pacientes. Interfaz intuitiva y segura para profesionales de la salud.',
+          tech: 'React, JS, Tailwind, Vercel',
+          url: 'highmed.vercel.app'
+        },
+        {
+          name: 'Sistema de Panadería',
+          description: 'Gestión integral de ventas e inventarios para panaderías locales. Control de stock en tiempo real y administración comercial.',
+          tech: 'React, JavaScript, CSS',
+          url: 'sistema-panaderia.vercel.app'
+        },
+        {
+          name: 'Gestión Fármaco',
+          description: 'Sistema especializado para el control de inventarios farmacéuticos, alertas de caducidad y trazabilidad de medicamentos.',
+          tech: 'React, Tailwind, JavaScript',
+          url: 'gestion-farmaco.vercel.app'
+        },
+        {
           name: 'Banco Express',
-          description: 'Aplicación web de banca digital con interfaz moderna y funcionalidades completas de gestión financiera. Sistema seguro con autenticación y transacciones.',
-          tech: 'React, JavaScript, CSS, Vercel',
-          url: 'banco-express-qxkz.vercel.app'
+          description: 'Simulador de banca digital con transacciones seguras y panel de control financiero detallado para usuarios.',
+          tech: 'React, Tailwind, Charts.js',
+          url: 'banco-express.vercel.app'
         },
         {
-          name: 'Bakery Soft',
-          description: 'Sistema de gestión para panadería con interfaz moderna. Aplicación web para administrar productos, ventas e inventario.',
-          tech: 'React, JavaScript, CSS, Vercel',
-          url: 'bakery-soft.vercel.app'
-        },
-        {
-          name: 'Mini Página Web',
-          description: 'Sitio web minimalista y elegante con diseño moderno. Proyecto enfocado en la simplicidad y experiencia de usuario optimizada.',
-          tech: 'HTML, CSS, JavaScript, Vercel',
-          url: 'mini-pagina.vercel.app'
-        },
-        {
-          name: 'Portafolio Personal',
-          description: 'Portafolio interactivo minimalista rediseñado con React y Tailwind CSS, impulsado por herramientas de IA.',
-          tech: 'React, Tailwind CSS, Vercel, Stitch AI, Antigravity',
-          url: 'portafolio-nuevo-hazel.vercel.app'
+          name: 'Portafolio AI',
+          description: 'Portafolio profesional interactivo, optimizado con herramientas de IA para una experiencia de usuario superior.',
+          tech: 'React, Tailwind, AI Tools',
+          url: 'cristian-portafolio.dev'
         }
       ];
       
       projects.forEach((project, index) => {
-        // Fondo alternado para cada proyecto
-        if (index % 2 === 0) {
-          doc.setFillColor(...colors.lightGray);
-          doc.rect(15, yPos - 5, 180, 25, 'F');
-        }
+        // Card de proyecto refinada
+        doc.setDrawColor(...colors.line);
+        doc.setLineWidth(0.3);
+        doc.rect(20, yPos - 5, 170, 35);
+        
+        // Borde izquierdo grueso
+        doc.setFillColor(...colors.accent);
+        doc.rect(20, yPos - 5, 2, 35, 'F');
         
         doc.setFont('helvetica', 'bold');
-        doc.setFontSize(12);
+        doc.setFontSize(13);
         doc.setTextColor(...colors.primary);
-        doc.text(`${index + 1}. ${project.name}`, 20, yPos);
-        yPos += 6;
+        doc.text(project.name, 28, yPos + 3);
         
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(10);
         doc.setTextColor(...colors.secondary);
-        const descLines = doc.splitTextToSize(project.description, 170);
-        doc.text(descLines, 20, yPos);
-        yPos += descLines.length * 4 + 2;
+        const descLines = doc.splitTextToSize(project.description, 155);
+        doc.text(descLines, 28, yPos + 10);
         
+        // Stack y Link
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(9);
-        doc.setTextColor(...colors.blue);
-        doc.text('Tecnologías: ', 20, yPos);
-        doc.setFont('helvetica', 'normal');
         doc.setTextColor(...colors.accent);
-        doc.text(project.tech, 45, yPos);
-        yPos += 4;
+        doc.text(`Tecnologías: ${project.tech}`, 28, yPos + 24);
         
         doc.setFont('helvetica', 'italic');
-        doc.setFontSize(9);
-        doc.setTextColor(...colors.accent);
-        doc.text(`URL: ${project.url}`, 20, yPos);
-        yPos += 12;
+        doc.setTextColor(...colors.secondary);
+        doc.text(`Demo online: ${project.url}`, 28, yPos + 29);
+        
+        yPos += 42;
       });
       
-      // === HABILIDADES BLANDAS ===
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(14);
-      doc.setTextColor(...colors.primary);
-      doc.text('HABILIDADES BLANDAS', 20, yPos);
-      
-      doc.setDrawColor(...colors.blue);
-      doc.setLineWidth(2);
-      doc.line(20, yPos + 2, 80, yPos + 2);
-      yPos += 12;
-      
-      const softSkills = [
-        'Trabajo en Equipo',
-        'Puntualidad',
-        'Responsabilidad',
-        'Comunicación Efectiva',
-        'Aprendizaje Continuo',
-        'Creatividad e Innovación',
-        'Resolución de Problemas',
-        'Adaptabilidad'
-      ];
-      
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(11);
-      doc.setTextColor(...colors.secondary);
-      
-      // Dividir en dos columnas
-      const halfLength = Math.ceil(softSkills.length / 2);
-      for (let i = 0; i < halfLength; i++) {
-        doc.text(`• ${softSkills[i]}`, 20, yPos + (i * 8));
-        if (softSkills[i + halfLength]) {
-          doc.text(`• ${softSkills[i + halfLength]}`, 110, yPos + (i * 8));
-        }
-      }
-      
-      yPos += halfLength * 8 + 15;
-      
-      // === INFORMACIÓN ADICIONAL ===
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(14);
-      doc.setTextColor(...colors.primary);
-      doc.text('INFORMACIÓN ADICIONAL', 20, yPos);
-      
-      doc.setDrawColor(...colors.blue);
-      doc.setLineWidth(2);
-      doc.line(20, yPos + 2, 90, yPos + 2);
-      yPos += 12;
-      
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(11);
-      doc.setTextColor(...colors.secondary);
-      doc.text('• Disponible para contrato de aprendizaje inmediatamente', 20, yPos);
-      yPos += 6;
-      doc.text('• Conocimientos en metodologías ágiles (Scrum)', 20, yPos);
-      yPos += 6;
-      doc.text('• Experiencia en trabajo colaborativo con Git/GitHub', 20, yPos);
-      yPos += 6;
-      doc.text('• Inglés técnico para documentación', 20, yPos);
-      
-      // === PIE DE PÁGINA ===
+      // Pie de página Final
       doc.setFillColor(...colors.primary);
-      doc.rect(0, 270, 210, 27, 'F');
-      
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(10);
-      doc.setTextColor(...colors.white);
-      doc.text('ENLACES PROFESIONALES', 20, 280);
-      
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9);
-      doc.text('LinkedIn: linkedin.com/in/cristian-contreras-9a4999343', 20, 286);
-      doc.text('GitHub: github.com/chaustrexp', 20, 291);
-      
+      doc.rect(0, 275, 210, 22, 'F');
       doc.setFont('helvetica', 'italic');
-      doc.setFontSize(8);
+      doc.setFontSize(8.5);
       doc.setTextColor(200, 200, 200);
-      doc.text(`CV generado el ${new Date().toLocaleDateString('es-ES')}`, 140, 291);
+      doc.text(`Documento generado profesionalmente el ${new Date().toLocaleDateString('es-ES')}`, 20, 285);
       doc.text('Página 2 de 2', 180, 285);
       
       // Descargar el PDF
-      doc.save('Cristian_Contreras_CV_2026.pdf');
+      doc.save('Cristian_Contreras_CV_Premium.pdf');
       
-      console.log('CV profesional de 2 páginas generado exitosamente');
+      console.log('CV Premium generado exitosamente');
     } catch (error) {
       console.error('Error al generar el CV:', error);
       // Fallback: usar el archivo estático
