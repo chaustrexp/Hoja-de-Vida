@@ -19,7 +19,7 @@
 @tailwind utilities;
 
 /* ===== GOOGLE FONTS IMPORT ===== */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 /* ===== BASE LAYER - ESTILOS FUNDAMENTALES ===== */
 @layer base {
@@ -36,7 +36,12 @@
    * Establece la fuente principal del proyecto
    */
   body {
-    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    @apply bg-white dark:bg-neutral-950 text-black dark:text-white transition-colors duration-300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
   }
 }
 
@@ -315,3 +320,92 @@
 .tablet-only {
   @apply hidden sm:block lg:hidden;
 }
+
+/* ===== PREMIUM GLASSMORPHISM & INTERACTIVE STYLES ===== */
+
+/**
+ * Glass Card - Contenedor traslúcido con efecto esmerilado premium
+ */
+.glass-card {
+  @apply bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl border border-neutral-200 dark:border-white/10 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.37)] transition-all duration-500 hover:border-black/30 dark:hover:border-white/25;
+}
+
+/**
+ * Navbar flotante tipo Glass
+ */
+.glass-navbar {
+  @apply bg-white/70 dark:bg-neutral-950/70 backdrop-blur-md border-b border-neutral-200 dark:border-white/5;
+}
+
+/**
+ * Inputs traslúcidos premium con anillo de foco activo
+ */
+.glass-input {
+  @apply bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm border border-neutral-300 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black/30 focus:border-black dark:focus:ring-white/30 dark:focus:border-white transition-all duration-300;
+}
+
+/**
+ * Texto con gradiente premium de tres colores (índigo -> violeta -> rosa)
+ */
+.text-gradient-premium {
+  @apply text-black dark:text-white;
+}
+
+/**
+ * Botón con resplandor neón animado
+ */
+.neon-btn-primary {
+  @apply bg-black dark:bg-white text-white dark:text-black font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(0,0,0,0.25)] dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] active:scale-95 inline-flex items-center gap-2;
+}
+
+.neon-btn-secondary {
+  @apply bg-white/20 dark:bg-neutral-900/20 backdrop-blur-sm border-2 border-black/30 dark:border-white/30 hover:border-black dark:hover:border-white hover:bg-black/5 dark:hover:bg-white/10 text-black dark:text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 inline-flex items-center gap-2;
+}
+
+/**
+ * Burbujas de brillo ambiental para el fondo
+ */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+  animation: float-slow 20s infinite alternate ease-in-out;
+}
+
+/* ===== KEYFRAMES ADICIONALES ===== */
+
+@keyframes float-slow {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(100px, 80px) scale(1.2);
+  }
+  100% {
+    transform: translate(-50px, -50px) scale(0.9);
+  }
+}
+
+@keyframes float-slow-reverse {
+  0% {
+    transform: translate(0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate(-80px, 100px) scale(0.95);
+  }
+  100% {
+    transform: translate(60px, -40px) scale(1.05);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 25s infinite alternate ease-in-out;
+}
+
+.animate-float-slow-reverse {
+  animation: float-slow-reverse 30s infinite alternate ease-in-out;
+}

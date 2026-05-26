@@ -13,7 +13,7 @@
  * - Botón scroll to top
  * - Mensaje motivacional
  * - Diseño completamente responsive
- * - Paleta de colores oatmilk
+ * - Paleta monocromática blanco y negro
  * 
  * @author Cristian Contreras
  * @version 2.0.0
@@ -34,26 +34,23 @@ const Footer = () => {
   const currentYear = new Date().getFullYear(); // Año actual dinámico
 
   /**
-   * Enlaces a redes sociales con colores personalizados
+   * Enlaces a redes sociales
    */
   const socialLinks = [
     {
       href: 'https://www.linkedin.com/in/cristian-contreras-9a4999343',
       icon: 'fab fa-linkedin',
-      label: 'LinkedIn',
-      color: 'hover:text-blue-600'
+      label: 'LinkedIn'
     },
     {
       href: 'https://github.com/chaustrexp',
       icon: 'fab fa-github',
-      label: 'GitHub',
-      color: 'hover:text-gray-600'
+      label: 'GitHub'
     },
     {
       href: 'mailto:cristianchaustre90@gmail.com',
       icon: 'fas fa-envelope',
-      label: 'Email',
-      color: 'hover:text-red-600'
+      label: 'Email'
     }
   ];
 
@@ -96,30 +93,30 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-elegant-50 dark:bg-gray-800 border-t border-elegant-200 dark:border-gray-700">
+    <footer className="bg-white/40 dark:bg-neutral-950/40 backdrop-blur-2xl border-t border-neutral-200 dark:border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Contenido principal del footer */}
         <div className="py-8 sm:py-12 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Información personal */}
           <div className="space-y-3 sm:space-y-4 text-center md:text-left">
-            <h3 className="text-lg sm:text-xl font-bold text-gradient dark:text-gradient-dark">
+            <h3 className="text-lg sm:text-xl font-bold text-black dark:text-white">
               Cristian Contreras
             </h3>
-            <p className="text-sm sm:text-base text-elegant-600 dark:text-gray-200 leading-relaxed">
+            <p className="text-sm sm:text-base text-neutral-600 dark:text-gray-300 leading-relaxed font-semibold">
               Desarrollador ADSO en formación, apasionado por crear soluciones 
               digitales innovadoras y comprometido con el aprendizaje continuo.
             </p>
-            <div className="flex space-x-3 sm:space-x-4 justify-center md:justify-start">
+            <div className="flex space-x-3 justify-center md:justify-start">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-8 h-8 sm:w-10 sm:h-10 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center text-elegant-600 dark:text-gray-400 ${link.color} transform hover:-translate-y-1 transition-all duration-300 shadow-md hover:shadow-lg`}
+                  className="w-9 h-9 sm:w-10 sm:h-10 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl flex items-center justify-center text-neutral-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 shadow-sm transform hover:-translate-y-1 transition-all duration-300"
                   aria-label={link.label}
                 >
-                  <i className={`${link.icon} text-sm sm:text-lg`}></i>
+                  <i className={`${link.icon} text-sm sm:text-base`}></i>
                 </a>
               ))}
             </div>
@@ -127,7 +124,7 @@ const Footer = () => {
 
           {/* Enlaces rápidos */}
           <div className="space-y-3 sm:space-y-4 text-center md:text-left">
-            <h4 className="text-base sm:text-lg font-semibold text-elegant-900 dark:text-white">
+            <h4 className="text-base sm:text-lg font-bold text-black dark:text-white uppercase tracking-wider text-xs">
               Enlaces Rápidos
             </h4>
             <ul className="space-y-1 sm:space-y-2">
@@ -135,7 +132,7 @@ const Footer = () => {
                 <li key={link.href}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-sm sm:text-base text-elegant-600 dark:text-gray-200 hover:text-elegant-600 dark:hover:text-elegant-300 transition-colors duration-200"
+                    className="text-sm sm:text-base text-neutral-500 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-semibold"
                   >
                     {link.label}
                   </button>
@@ -146,25 +143,25 @@ const Footer = () => {
 
           {/* Información de contacto */}
           <div className="space-y-3 sm:space-y-4 text-center md:text-left">
-            <h4 className="text-base sm:text-lg font-semibold text-elegant-900 dark:text-white">
+            <h4 className="text-base sm:text-lg font-bold text-black dark:text-white uppercase tracking-wider text-xs">
               Contacto
             </h4>
             <div className="space-y-2 sm:space-y-3">
               <div className="flex items-center space-x-2 sm:space-x-3 justify-center md:justify-start">
-                <i className="fas fa-map-marker-alt text-elegant-500 dark:text-elegant-300 text-sm sm:text-base"></i>
-                <span className="text-sm sm:text-base text-elegant-600 dark:text-gray-200">
+                <i className="fas fa-map-marker-alt text-black dark:text-white text-sm"></i>
+                <span className="text-sm text-neutral-600 dark:text-gray-300 font-semibold">
                   Cúcuta, Norte de Santander
                 </span>
               </div>
               <div className="flex items-center space-x-2 sm:space-x-3 justify-center md:justify-start">
-                <i className="fas fa-phone text-elegant-600 dark:text-elegant-300 text-sm sm:text-base"></i>
-                <span className="text-sm sm:text-base text-elegant-600 dark:text-gray-200">
+                <i className="fas fa-phone text-black dark:text-white text-sm"></i>
+                <span className="text-sm text-neutral-600 dark:text-gray-300 font-semibold">
                   +57 3229615724
                 </span>
               </div>
               <div className="flex items-center space-x-2 sm:space-x-3 justify-center md:justify-start">
-                <i className="fas fa-envelope text-elegant-700 dark:text-elegant-300 text-sm sm:text-base"></i>
-                <span className="text-sm sm:text-base text-elegant-600 dark:text-gray-200">
+                <i className="fas fa-envelope text-black dark:text-white text-sm"></i>
+                <span className="text-sm text-neutral-600 dark:text-gray-300 font-semibold">
                   cristianchaustre90@gmail.com
                 </span>
               </div>
@@ -173,15 +170,15 @@ const Footer = () => {
         </div>
 
         {/* Línea divisoria */}
-        <div className="border-t border-elegant-200 dark:border-gray-700"></div>
+        <div className="border-t border-neutral-200 dark:border-white/5"></div>
 
         {/* Copyright y botón scroll to top */}
         <div className="py-4 sm:py-6 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
           <div className="text-center md:text-left">
-            <p className="text-sm sm:text-base text-elegant-600 dark:text-gray-200">
+            <p className="text-sm text-neutral-600 dark:text-gray-300 font-medium">
               &copy; {currentYear} Cristian Contreras. Todos los derechos reservados.
             </p>
-            <p className="text-xs sm:text-sm text-elegant-500 dark:text-gray-300 mt-1">
+            <p className="text-xs text-neutral-400 dark:text-neutral-500 font-bold mt-1 uppercase tracking-wide">
               Desarrollado con React y Tailwind CSS
             </p>
           </div>
@@ -189,7 +186,7 @@ const Footer = () => {
           {/* Botón scroll to top */}
           <button
             onClick={scrollToTop}
-            className="w-10 h-10 sm:w-12 sm:h-12 bg-elegant-600 hover:bg-elegant-700 rounded-full flex items-center justify-center text-white transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="w-10 h-10 sm:w-11 sm:h-11 bg-black dark:bg-white text-white dark:text-black rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all duration-300"
             aria-label="Volver arriba"
           >
             <i className="fas fa-arrow-up text-sm sm:text-base"></i>
@@ -198,12 +195,13 @@ const Footer = () => {
       </div>
 
       {/* Mensaje motivacional */}
-      <div className="bg-elegant-600 dark:bg-elegant-700">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
-          <p className="text-center text-white text-xs sm:text-sm">
-            <i className="fas fa-heart text-red-300 mr-1 sm:mr-2"></i>
+      <div className="bg-black dark:bg-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#fff_1px,transparent_1px)] dark:bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 relative z-10">
+          <p className="text-center text-white dark:text-black text-xs sm:text-sm font-bold tracking-wide">
+            <i className="fas fa-heart mr-1 sm:mr-2 animate-pulse"></i>
             "El código es poesía en movimiento, cada línea cuenta una historia de soluciones."
-            <i className="fas fa-heart text-red-300 ml-1 sm:ml-2"></i>
+            <i className="fas fa-heart ml-1 sm:mr-2 animate-pulse"></i>
           </p>
         </div>
       </div>

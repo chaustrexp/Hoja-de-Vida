@@ -18,7 +18,7 @@
  * @since 2024-12-29
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import jsPDF from 'jspdf';
 
@@ -32,6 +32,33 @@ import jsPDF from 'jspdf';
 const Hero = () => {
   // ===== HOOKS =====
   const [ref, isVisible] = useScrollAnimation(); // Hook para animaciones al scroll
+
+  // ===== TYPING ANIMATION STATE =====
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(120);
+  const words = ["Tecnólogo en Análisis y Desarrollo de Software", "Desarrollador Web Frontend", "Desarrollador Backend PHP/Laravel", "Apasionado por la tecnología"];
+
+  useEffect(() => {
+    const handleType = () => {
+      const i = loopNum % words.length;
+      const fullWord = words[i];
+      setText(isDeleting ? fullWord.substring(0, text.length - 1) : fullWord.substring(0, text.length + 1));
+      setTypingSpeed(isDeleting ? 40 : 100);
+
+      if (!isDeleting && text === fullWord) {
+        setTimeout(() => setIsDeleting(true), 2500);
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+      }
+    };
+
+    const timer = setTimeout(handleType, typingSpeed);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text, isDeleting, loopNum, typingSpeed]);
 
   // ===== FUNCIONES DE INTERACCIÓN =====
   /**
@@ -86,7 +113,7 @@ const Hero = () => {
       // Intentar cargar la foto de perfil
       let profileImgData = null;
       try {
-        profileImgData = await getImageData('/img/foto de perfil mientras.jpg');
+        profileImgData = await getImageData('/img/Foto de perfil.jpeg');
       } catch (imgError) {
         console.warn('No se pudo cargar la foto de perfil para el PDF:', imgError);
       }
@@ -98,14 +125,14 @@ const Hero = () => {
         format: 'a4'
       });
       
-      // Configurar colores (RGB) - Paleta Premium
+      // Configurar colores (RGB) - Paleta Monocromática (Blanco y Negro)
       const colors = {
-        primary: [26, 32, 44],       // Azul muy oscuro para texto principal
-        secondary: [74, 85, 104],    // Gris para texto secundario
-        accent: [37, 99, 235],       // Azul vibrante para acentos
-        sidebar: [248, 250, 252],    // Fondo sidebar (Slate 50)
+        primary: [0, 0, 0],          // Negro puro para texto principal
+        secondary: [82, 82, 82],     // Gris medio para texto secundario
+        accent: [0, 0, 0],           // Negro para acentos y elementos destacados
+        sidebar: [245, 245, 245],    // Fondo sidebar gris muy claro
         white: [255, 255, 255],
-        line: [226, 232, 240]        // Color para líneas divisorias
+        line: [212, 212, 212]        // Gris claro para líneas divisorias
       };
       
       // =================== PÁGINA 1 ===================
@@ -440,9 +467,9 @@ const Hero = () => {
       doc.text('Página 2 de 2', 180, 285);
       
       // Descargar el PDF
-      doc.save('Cristian_Contreras_CV_Premium.pdf');
+      doc.save('Cristian_Contreras_CV.pdf');
       
-      console.log('CV Premium generado exitosamente');
+      console.log('CV Monocromático generado exitosamente');
     } catch (error) {
       console.error('Error al generar el CV:', error);
       // Fallback: usar el archivo estático
@@ -479,22 +506,34 @@ const Hero = () => {
   };
 
   return (
-    <section id="inicio" className="min-h-screen flex items-center pt-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-elegant-50 to-elegant-100 dark:from-elegant-950 dark:to-elegant-900">
-      <div className="max-w-7xl mx-auto w-full">
+    <section id="inicio" className="min-h-screen flex items-center pt-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-neutral-100 dark:from-neutral-950 dark:to-neutral-900 relative overflow-hidden">
+      {/* Globos ambientales decorativos */}
+      <div className="ambient-glow bg-neutral-400 w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] -top-10 -left-10 dark:opacity-10 animate-float-slow"></div>
+      <div className="ambient-glow bg-neutral-500 w-[300px] sm:w-[450px] h-[300px] sm:h-[450px] bottom-10 right-10 dark:opacity-10 animate-float-slow-reverse" style={{ animationDelay: '-10s' }}></div>
+
+      <div className="max-w-7xl mx-auto w-full relative z-10">
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Contenido de texto */}
           <div className={`space-y-6 lg:space-y-8 text-center lg:text-left order-2 lg:order-1 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             <div className="space-y-4">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-elegant-900 dark:text-white">
+              <span className="px-3.5 py-1.5 bg-black/5 dark:bg-white/10 text-black dark:text-white rounded-full text-xs font-bold uppercase tracking-wider inline-block border border-black/10 dark:border-white/10">
+                Hoja de Vida Digital
+              </span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-black dark:text-white">
                 Hola, soy{' '}
-                <span className="text-gradient dark:text-gradient-dark block sm:inline">
+                <span className="text-black dark:text-white block sm:inline">
                   Cristian Contreras
                 </span>
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-elegant-700 dark:text-gray-300 font-medium">
-                Aprendiz Tecnólogo en Análisis y Desarrollo de Software - SENA
-              </p>
-              <p className="text-base sm:text-lg text-elegant-600 dark:text-gray-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              
+              {/* Typing Subtitle */}
+              <div className="h-10 sm:h-12 flex items-center justify-center lg:justify-start">
+                <p className="text-lg sm:text-xl md:text-2xl text-neutral-700 dark:text-gray-200 font-bold">
+                  <span className="border-r-2 border-black dark:border-white animate-pulse pr-1.5">{text}</span>
+                </p>
+              </div>
+
+              <p className="text-base sm:text-lg text-neutral-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
                 Desarrollador web en formación, apasionado por crear soluciones digitales innovadoras 
                 y comprometido con el aprendizaje continuo en tecnologías modernas.
               </p>
@@ -504,14 +543,14 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button
                 onClick={handleDownloadCV}
-                className="btn-primary w-full sm:w-auto"
+                className="neon-btn-primary w-full sm:w-auto"
               >
                 <i className="fas fa-download"></i>
-                Descargar CV
+                Descargar CV Premium
               </button>
               <button
                 onClick={scrollToContact}
-                className="btn-secondary w-full sm:w-auto"
+                className="neon-btn-secondary w-full sm:w-auto"
               >
                 <i className="fas fa-envelope"></i>
                 Contactar
@@ -519,77 +558,72 @@ const Hero = () => {
             </div>
 
             {/* Enlaces sociales */}
-            <div className="flex space-x-4 sm:space-x-6 justify-center lg:justify-start">
-              <a
-                href="https://www.linkedin.com/in/cristian-contreras-9a4999343"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 bg-elegant-50 dark:bg-gray-800 rounded-full flex items-center justify-center text-elegant-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 border border-elegant-200 dark:border-gray-700"
-              >
-                <i className="fab fa-linkedin text-lg sm:text-xl"></i>
-              </a>
-              <a
-                href="https://github.com/chaustrexp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 bg-elegant-50 dark:bg-gray-800 rounded-full flex items-center justify-center text-elegant-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 border border-elegant-200 dark:border-gray-700"
-              >
-                <i className="fab fa-github text-lg sm:text-xl"></i>
-              </a>
-              <a
-                href="https://portfolio.cristian-contreras.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 bg-elegant-50 dark:bg-gray-800 rounded-full flex items-center justify-center text-elegant-600 dark:text-gray-400 hover:text-elegant-700 dark:hover:text-elegant-300 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 border border-elegant-200 dark:border-gray-700"
-              >
-                <i className="fas fa-briefcase text-lg sm:text-xl"></i>
-              </a>
+            <div className="flex space-x-4 sm:space-x-5 justify-center lg:justify-start">
+              {[
+                { href: "https://www.linkedin.com/in/cristian-contreras-9a4999343", icon: "fab fa-linkedin-in" },
+                { href: "https://github.com/chaustrexp", icon: "fab fa-github" },
+                { href: "https://portfolio.cristian-contreras.dev", icon: "fas fa-briefcase" }
+              ].map((item, idx) => (
+                <a
+                  key={idx}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-11 h-11 sm:w-12 sm:h-12 bg-white/40 dark:bg-neutral-800/40 border border-neutral-200 dark:border-white/10 rounded-xl flex items-center justify-center text-neutral-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:border-black/40 dark:hover:border-white/30 shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm`}
+                >
+                  <i className={`${item.icon} text-lg`}></i>
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Tarjeta de perfil */}
           <div className={`flex justify-center order-1 lg:order-2 ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`}>
-            <div className="card p-6 sm:p-8 w-full max-w-xs sm:max-w-sm text-center transform hover:scale-105 transition-all duration-500 group">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 mx-auto mb-4 sm:mb-6 shadow-md rounded-full overflow-hidden border-3 border-elegant-200 dark:border-gray-600 group-hover:border-elegant-300 dark:group-hover:border-gray-500 transition-all duration-300">
-                <img 
-                  src="/img/foto de perfil mientras.jpg" 
-                  alt="Cristian Contreras - Desarrollador ADSO"
-                  className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-300"
-                  onError={(e) => {
-                    e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iMzciIHI9IjEyIiBmaWxsPSIjOUI5QkEzIi8+CjxwYXRoIGQ9Ik0yNSA3NUMyNSA2Ni43MTU3IDMxLjcxNTcgNjAgNDAgNjBINjBDNjguMjg0MyA2MCA3NSA2Ni43MTU3IDc1IDc1VjgwSDI1Vjc1WiIgZmlsbD0iIzlCOUJBMyIvPgo8L3N2Zz4K';
-                  }}
-                />
+            <div className="glass-card p-6 sm:p-8 w-full max-w-xs sm:max-w-sm text-center group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-neutral-300/20 dark:bg-neutral-600/10 rounded-full blur-2xl pointer-events-none"></div>
+              
+              {/* Spinning Avatar Border */}
+              <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 mx-auto mb-4 sm:mb-6 relative group/avatar">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-black via-neutral-500 to-black dark:from-white dark:via-neutral-400 dark:to-white opacity-30 blur-xs group-hover/avatar:opacity-60 group-hover/avatar:animate-spin transition-all duration-1000" style={{ animationDuration: '6s' }}></div>
+                <div className="absolute inset-1 rounded-full overflow-hidden border-2 border-white dark:border-neutral-800 bg-white dark:bg-neutral-950">
+                  <img 
+                    src="/img/Foto de perfil.jpeg" 
+                    alt="Cristian Contreras - Desarrollador ADSO"
+                    className="w-full h-full object-cover object-center transform group-hover/avatar:scale-110 transition-transform duration-300"
+                    onError={(e) => {
+                      e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iMzciIHI9IjEyIiBmaWxsPSIjOUI5QkEzIi8+CjxwYXRoIGQ9Ik0yNSA3NUMyNSA2Ni43MTU3IDMxLjcxNTcgNjAgNDAgNjBINjBDNjguMjg0MyA2MCA3NSA2Ni43MTU3IDc1IDc1VjgwSDI1Vjc1WiIgZmlsbD0iIzlCOUJBMyIvPgo8L3N2Zz4K';
+                    }}
+                  />
+                </div>
               </div>
               
               <div className="space-y-3 sm:space-y-4">
                 <div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-elegant-900 dark:text-white">
+                  <h3 className="text-xl font-bold text-black dark:text-white">
                     Cristian Contreras
                   </h3>
-                  <p className="text-sm sm:text-base text-elegant-600 dark:text-gray-300">
+                  <p className="text-sm font-semibold text-neutral-500 dark:text-neutral-400 tracking-wide">
                     Desarrollador ADSO
                   </p>
                 </div>
                 
-                <div className="flex items-center justify-center space-x-2 text-elegant-500 dark:text-gray-300">
-                  <i className="fas fa-map-marker-alt text-sm"></i>
-                  <span className="text-xs sm:text-sm">Cúcuta, Norte de Santander</span>
+                <div className="flex items-center justify-center space-x-2 text-neutral-600 dark:text-gray-300 bg-neutral-100/50 dark:bg-neutral-800/50 px-3 py-1.5 rounded-xl inline-flex text-xs font-semibold border border-neutral-200 dark:border-white/5">
+                  <i className="fas fa-map-marker-alt text-black dark:text-white"></i>
+                  <span>Cúcuta, Norte de Santander</span>
                 </div>
                 
                 {/* Estadísticas rápidas */}
-                <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-3 sm:pt-4 border-t border-elegant-200 dark:border-gray-700">
-                  <div className="text-center">
-                    <div className="text-xl sm:text-2xl font-bold text-elegant-600 dark:text-elegant-400">2+</div>
-                    <div className="text-xs text-elegant-500 dark:text-gray-300">Años</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-xl sm:text-2xl font-bold text-elegant-600 dark:text-elegant-400">10+</div>
-                    <div className="text-xs text-elegant-500 dark:text-gray-300">Proyectos</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-xl sm:text-2xl font-bold text-elegant-600 dark:text-elegant-400">5+</div>
-                    <div className="text-xs text-elegant-500 dark:text-gray-300">Tecnologías</div>
-                  </div>
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-4 border-t border-neutral-200 dark:border-white/10">
+                  {[
+                    { val: "2+", label: "Años" },
+                    { val: "10+", label: "Proyectos" },
+                    { val: "5+", label: "Techs" }
+                  ].map((stat, idx) => (
+                    <div key={idx} className="text-center group/stat">
+                      <div className="text-xl sm:text-2xl font-black text-black dark:text-white group-hover/stat:scale-110 transition-transform duration-300">{stat.val}</div>
+                      <div className="text-[10px] sm:text-xs text-neutral-500 dark:text-gray-400 font-bold uppercase tracking-wider">{stat.label}</div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

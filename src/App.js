@@ -40,6 +40,7 @@ import Notification from './components/Notification';
 function App() {
   // ===== ESTADOS =====
   const [isLoading, setIsLoading] = useState(true); // Estado de carga inicial
+  const [selectedSkill, setSelectedSkill] = useState(null); // Estado para filtrado interactivo de proyectos por habilidad
 
   // ===== FUNCIONES =====
   /**
@@ -59,13 +60,13 @@ function App() {
   // ===== RENDER PRINCIPAL =====
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-elegant-50 dark:bg-elegant-950 text-elegant-900 dark:text-elegant-50 transition-colors duration-300">
+      <div className="min-h-screen bg-premium-50 dark:bg-premium-950 text-premium-900 dark:text-premium-100 transition-colors duration-300">
         <Navbar />
         <Hero />
         <Profile />
         <Education />
-        <Skills />
-        <Projects />
+        <Skills selectedSkill={selectedSkill} setSelectedSkill={setSelectedSkill} />
+        <Projects selectedSkill={selectedSkill} setSelectedSkill={setSelectedSkill} />
         <Contact />
         <Footer />
         <Notification />

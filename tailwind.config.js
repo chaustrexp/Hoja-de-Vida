@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         // Paleta de Grises Profesional - Colores principales del proyecto
         elegant: {
-          50: '#F7FAFC',   // Blanco Nieve (Fondo Principal)
+          50: '#F8FAFC',   // Blanco Nieve (Fondo Principal)
           100: '#EDF2F7',  // Gris muy claro (Fondo Secundario)
           200: '#E2E8F0',  // Bordes sutiles
           300: '#CBD5E1',  // Bordes definidos
@@ -21,6 +21,24 @@ module.exports = {
           800: '#1A202C',  // Grafito Profundo (Títulos y principal)
           900: '#1A202C',   // Grafito Profundo (Títulos y principal)
           950: '#111827'    // Deeper Dark for BG
+        },
+        premium: {
+          50: '#FAFAFA',   // Blanco Puro (Modo Claro Fondo)
+          100: '#F5F5F5',  // Modo Claro Secundario
+          200: '#E5E5E5',  // Bordes sutiles
+          300: '#D4D4D4',  // Bordes definidos
+          400: '#A3A3A3',  // Texto terciario
+          500: '#737373',  // Texto secundario
+          600: '#525252',  // Elementos interactivos
+          700: '#404040',  // Texto secundario oscuro
+          750: '#333333',  // Texto medio
+          800: '#1A1A1A',  // Títulos
+          900: '#0A0A0A',  // Negro Profundo
+          950: '#050505',  // Fondo Ultra Profundo
+          glow: 'rgba(0, 0, 0, 0.10)',
+          primary: '#000000', // Negro Puro
+          secondary: '#333333', // Gris Oscuro
+          accent: '#555555'  // Gris Medio
         },
         primary: {
           50: '#f8fafc',

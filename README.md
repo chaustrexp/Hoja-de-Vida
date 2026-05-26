@@ -5,10 +5,10 @@ Una hoja de vida digital moderna y responsiva desarrollada con React y Tailwind 
 ## 🚀 Características
 
 ### ✨ Diseño Moderno
-- **Interfaz limpia y profesional** con paleta de colores azul y verde
+- **Interfaz minimalista y profesional** con paleta monocromática (blanco y negro)
 - **Tipografía Inter** de Google Fonts para máxima legibilidad
 - **Diseño responsivo** que se adapta perfectamente a desktop, tablet y móvil
-- **Modo claro/oscuro** con persistencia en localStorage
+- **Modo claro/oscuro** nativo con persistencia en localStorage
 
 ### 🎯 Funcionalidades Interactivas
 - **Navegación suave** con scroll automático entre secciones
@@ -77,17 +77,16 @@ npm run eject      # Expone la configuración (irreversible)
 ### Colores
 Los colores están definidos en `tailwind.config.js` y pueden ser fácilmente personalizados:
 
+Los colores están definidos en `tailwind.config.js` y ahora utilizan un esquema monocromático puro:
+
 ```javascript
 colors: {
-  primary: {
-    50: '#eff6ff',
-    500: '#3b82f6',
-    600: '#2563eb',
-    700: '#1d4ed8'
-  },
-  secondary: {
-    500: '#10b981',
-    600: '#059669'
+  neutral: {
+    50: '#fafafa',
+    100: '#f5f5f5',
+    // ... escala de grises
+    900: '#171717',
+    950: '#0a0a0a',
   }
 }
 ```
@@ -182,7 +181,7 @@ Las contribuciones son bienvenidas. Para cambios importantes:
 **Cristian Contreras**
 - LinkedIn: [linkedin.com/in/cristian-contreras](https://www.linkedin.com/in/cristian-contreras-9a4999343)
 - GitHub: [github.com/chaustrexp](https://github.com/chaustrexp)
-- Email: cristianchaustre90@email.com
+- Email: cristianchaustre90@gmail.com
 
 ---
 

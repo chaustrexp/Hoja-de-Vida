@@ -11,7 +11,7 @@
  * - Enlaces a redes sociales
  * - Sección de disponibilidad
  * - Diseño completamente responsive
- * - Paleta de colores oatmilk
+ * - Paleta monocromática blanco y negro
  * - Validación de email y campos requeridos
  * 
  * @author Cristian Contreras
@@ -43,27 +43,29 @@ const Contact = () => {
 
   // ===== DATOS DE CONTACTO =====
   /**
-   * Información de contacto con iconos y colores
-   * Usa la paleta oatmilk para consistencia visual
+   * Información de contacto con iconos
    */
   const contactInfo = [
     {
       icon: 'fas fa-map-marker-alt',
       title: 'Ubicación',
       value: 'Cúcuta, Norte de Santander',
-      color: 'text-elegant-600 dark:text-elegant-300'
+      iconColor: 'text-black dark:text-white',
+      bgGlow: 'bg-neutral-100 dark:bg-neutral-800'
     },
     {
       icon: 'fas fa-phone',
       title: 'Teléfono',
       value: '+57 3229615724',
-      color: 'text-elegant-700 dark:text-elegant-200'
+      iconColor: 'text-black dark:text-white',
+      bgGlow: 'bg-neutral-100 dark:bg-neutral-800'
     },
     {
       icon: 'fas fa-envelope',
       title: 'Email',
       value: 'cristianchaustre90@gmail.com',
-      color: 'text-elegant-500 dark:text-elegant-400'
+      iconColor: 'text-black dark:text-white',
+      bgGlow: 'bg-neutral-100 dark:bg-neutral-800'
     }
   ];
 
@@ -130,21 +132,23 @@ const Contact = () => {
    */
   const ContactInfoCard = ({ info, index }) => (
     <div
-      className={`card p-4 sm:p-6 text-center group hover:scale-105 transition-all duration-300 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+      className={`glass-card p-4 sm:p-5 flex items-center space-x-4 group hover:scale-[1.02] hover:shadow-md transition-all duration-300 backdrop-blur-sm ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <div className={`w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-full bg-elegant-100 dark:bg-gray-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-        <i className={`${info.icon} text-lg sm:text-2xl ${info.color}`}></i>
+      <div className={`w-11 h-11 rounded-xl ${info.bgGlow} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-neutral-200 dark:border-white/5`}>
+        <i className={`${info.icon} text-lg ${info.iconColor}`}></i>
       </div>
-      <h4 className="font-semibold text-elegant-900 dark:text-white mb-2 text-sm sm:text-base">{info.title}</h4>
-      <p className="text-elegant-600 dark:text-gray-200 text-sm sm:text-base">{info.value}</p>
+      <div>
+        <h4 className="font-bold text-neutral-500 dark:text-gray-400 text-xs uppercase tracking-wider">{info.title}</h4>
+        <p className="font-semibold text-black dark:text-white text-sm sm:text-base">{info.value}</p>
+      </div>
     </div>
   );
 
   return (
-    <section id="contacto" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="section-title text-elegant-900 dark:text-white">
+    <section id="contacto" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-neutral-950 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2 className="section-title text-black dark:text-white">
           Contacto
         </h2>
 
@@ -152,10 +156,10 @@ const Contact = () => {
           {/* Información de contacto */}
           <div className="space-y-6 sm:space-y-8">
             <div className={`${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-              <h3 className="text-xl sm:text-2xl font-semibold text-elegant-900 dark:text-white mb-4 sm:mb-6 text-center lg:text-left">
+              <h3 className="text-xl sm:text-2xl font-bold text-black dark:text-white mb-4 text-center lg:text-left">
                 ¡Hablemos!
               </h3>
-              <p className="text-base sm:text-lg text-elegant-600 dark:text-gray-300 leading-relaxed mb-6 sm:mb-8 text-center lg:text-left">
+              <p className="text-base sm:text-lg text-neutral-600 dark:text-gray-300 leading-relaxed mb-6 text-center lg:text-left font-medium">
                 Estoy disponible para oportunidades de contrato de aprendizaje 
                 y colaboraciones en proyectos de desarrollo web. Me encantaría 
                 conocer más sobre tu empresa y cómo puedo contribuir a su crecimiento.
@@ -170,42 +174,35 @@ const Contact = () => {
             </div>
 
             {/* Enlaces sociales */}
-            <div className={`flex justify-center lg:justify-start space-x-4 sm:space-x-6 pt-6 sm:pt-8 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
-              <a
-                href="https://www.linkedin.com/in/cristian-contreras-9a4999343"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center text-white transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                <i className="fab fa-linkedin text-lg sm:text-xl"></i>
-              </a>
-              <a
-                href="https://github.com/chaustrexp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 hover:bg-gray-900 rounded-full flex items-center justify-center text-white transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                <i className="fab fa-github text-lg sm:text-xl"></i>
-              </a>
-              <a
-                href="mailto:cristianchaustre90@gmail.com"
-                className="w-10 h-10 sm:w-12 sm:h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center text-white transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                <i className="fas fa-envelope text-lg sm:text-xl"></i>
-              </a>
+            <div className={`flex justify-center lg:justify-start space-x-4 pt-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
+              {[
+                { href: "https://www.linkedin.com/in/cristian-contreras-9a4999343", icon: "fab fa-linkedin-in" },
+                { href: "https://github.com/chaustrexp", icon: "fab fa-github" },
+                { href: "mailto:cristianchaustre90@gmail.com", icon: "fas fa-envelope" }
+              ].map((item, idx) => (
+                <a
+                  key={idx}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 bg-white/40 dark:bg-neutral-800/40 border border-neutral-200 dark:border-white/10 rounded-xl flex items-center justify-center text-neutral-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:border-black/40 dark:hover:border-white/30 shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm"
+                >
+                  <i className={`${item.icon} text-lg`}></i>
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Formulario de contacto */}
           <div className={`${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`}>
-            <div className="card p-6 sm:p-8">
-              <h3 className="text-lg sm:text-xl font-semibold text-elegant-900 dark:text-white mb-4 sm:mb-6 text-center lg:text-left">
+            <div className="glass-card p-6 sm:p-8 relative">
+              <h3 className="text-lg sm:text-xl font-bold text-black dark:text-white mb-4 sm:mb-6 text-center lg:text-left">
                 Envíame un mensaje
               </h3>
               
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-elegant-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="name" className="block text-xs font-bold text-neutral-500 dark:text-gray-400 mb-2 uppercase tracking-widest">
                     Nombre completo
                   </label>
                   <input
@@ -214,14 +211,14 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-elegant-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-elegant-500 focus:border-transparent bg-white dark:bg-gray-800 text-elegant-900 dark:text-white transition-colors duration-200 text-sm sm:text-base"
+                    className="w-full glass-input"
                     placeholder="Tu nombre completo"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-elegant-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-xs font-bold text-neutral-500 dark:text-gray-400 mb-2 uppercase tracking-widest">
                     Correo electrónico
                   </label>
                   <input
@@ -230,14 +227,14 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-elegant-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-elegant-500 focus:border-transparent bg-white dark:bg-gray-800 text-elegant-900 dark:text-white transition-colors duration-200 text-sm sm:text-base"
+                    className="w-full glass-input"
                     placeholder="tu@email.com"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-elegant-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-xs font-bold text-neutral-500 dark:text-gray-400 mb-2 uppercase tracking-widest">
                     Mensaje
                   </label>
                   <textarea
@@ -246,7 +243,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows="4"
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-elegant-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-elegant-500 focus:border-transparent bg-white dark:bg-gray-800 text-elegant-900 dark:text-white transition-colors duration-200 resize-vertical text-sm sm:text-base"
+                    className="w-full glass-input resize-vertical"
                     placeholder="Cuéntame sobre la oportunidad de contrato de aprendizaje..."
                     required
                   ></textarea>
@@ -255,7 +252,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full btn-primary justify-center text-sm sm:text-base ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
+                  className={`w-full neon-btn-primary justify-center ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
                 >
                   {isSubmitting ? (
                     <>
@@ -275,15 +272,15 @@ const Contact = () => {
         </div>
 
         {/* Disponibilidad */}
-        <div className={`mt-12 sm:mt-16 text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
-          <div className="card p-6 sm:p-8 max-w-2xl mx-auto">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <i className="fas fa-check-circle text-xl sm:text-2xl text-green-600 dark:text-green-400"></i>
+        <div className={`mt-12 sm:mt-16 text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.5s' }}>
+          <div className="glass-card p-6 sm:p-8 max-w-2xl mx-auto border-black/10 dark:border-white/10 backdrop-blur-md">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-black dark:bg-white rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg">
+              <i className="fas fa-check-circle text-xl sm:text-2xl text-white dark:text-black"></i>
             </div>
-            <h3 className="text-lg sm:text-xl font-semibold text-elegant-900 dark:text-white mb-3 sm:mb-4">
+            <h3 className="text-lg sm:text-xl font-bold text-black dark:text-white mb-3 sm:mb-4">
               Disponible para Contrato de Aprendizaje
             </h3>
-            <p className="text-sm sm:text-base text-elegant-600 dark:text-gray-300 leading-relaxed">
+            <p className="text-sm sm:text-base text-neutral-600 dark:text-gray-300 leading-relaxed font-semibold">
               Actualmente estoy buscando oportunidades de contrato de aprendizaje para 
               completar mi formación como Tecnólogo en Análisis y Desarrollo de Software. 
               Estoy disponible para comenzar inmediatamente y comprometido con el aprendizaje 

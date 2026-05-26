@@ -42,21 +42,21 @@ const Profile = () => {
   ];
 
   return (
-    <section id="perfil" className="py-12 sm:py-16 lg:py-20 bg-elegant-50 dark:bg-gray-900">
+    <section id="perfil" className="py-12 sm:py-16 lg:py-20 bg-neutral-100/50 dark:bg-neutral-950/40 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="section-title">
+        <h2 className="section-title text-black dark:text-white">
           Perfil Profesional
         </h2>
 
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start lg:items-center">
           {/* Contenido de texto */}
           <div className={`lg:col-span-2 space-y-4 sm:space-y-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-            <p className="text-base sm:text-lg text-elegant-700 dark:text-gray-200 leading-relaxed">
+            <p className="text-base sm:text-lg text-neutral-800 dark:text-gray-200 leading-relaxed font-semibold">
               Aprendiz del programa Tecnólogo en Análisis y Desarrollo de Software del SENA, 
               con sólidos conocimientos en desarrollo web frontend y backend. Me caracterizo 
               por mi responsabilidad, puntualidad y capacidad de trabajo en equipo.
             </p>
-            <p className="text-base sm:text-lg text-elegant-700 dark:text-gray-200 leading-relaxed">
+            <p className="text-base sm:text-lg text-neutral-600 dark:text-gray-300 leading-relaxed font-medium">
               Busco una oportunidad de contrato de aprendizaje donde pueda aplicar mis 
               conocimientos técnicos, contribuir al crecimiento de la empresa y continuar 
               mi formación profesional en el desarrollo de soluciones digitales innovadoras.
@@ -65,28 +65,28 @@ const Profile = () => {
             {/* Características destacadas */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-8">
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-elegant-200 dark:bg-elegant-800 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-graduation-cap text-elegant-600 dark:text-elegant-400 text-sm sm:text-base"></i>
+                <div className="w-9 h-9 sm:w-11 sm:h-11 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-black dark:text-white rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i className="fas fa-graduation-cap text-base"></i>
                 </div>
-                <span className="text-sm sm:text-base text-elegant-800 dark:text-gray-200">Formación SENA</span>
+                <span className="text-sm sm:text-base text-neutral-800 dark:text-gray-200 font-bold">Formación SENA</span>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-elegant-200 dark:bg-elegant-800 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-code text-elegant-600 dark:text-elegant-400 text-sm sm:text-base"></i>
+                <div className="w-9 h-9 sm:w-11 sm:h-11 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-black dark:text-white rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i className="fas fa-code text-base"></i>
                 </div>
-                <span className="text-sm sm:text-base text-elegant-800 dark:text-gray-200">Desarrollo Web</span>
+                <span className="text-sm sm:text-base text-neutral-800 dark:text-gray-200 font-bold">Desarrollo Web</span>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-elegant-200 dark:bg-elegant-800 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-users text-elegant-600 dark:text-elegant-400 text-sm sm:text-base"></i>
+                <div className="w-9 h-9 sm:w-11 sm:h-11 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-black dark:text-white rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i className="fas fa-users text-base"></i>
                 </div>
-                <span className="text-sm sm:text-base text-elegant-800 dark:text-gray-200">Trabajo en Equipo</span>
+                <span className="text-sm sm:text-base text-neutral-800 dark:text-gray-200 font-bold">Trabajo en Equipo</span>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-elegant-200 dark:bg-elegant-800 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-lightbulb text-elegant-600 dark:text-elegant-400 text-sm sm:text-base"></i>
+                <div className="w-9 h-9 sm:w-11 sm:h-11 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-black dark:text-white rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i className="fas fa-lightbulb text-base"></i>
                 </div>
-                <span className="text-sm sm:text-base text-elegant-800 dark:text-gray-200">Innovación</span>
+                <span className="text-sm sm:text-base text-neutral-800 dark:text-gray-200 font-bold">Innovación</span>
               </div>
             </div>
           </div>
@@ -96,13 +96,13 @@ const Profile = () => {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="card p-4 sm:p-6 text-center transform hover:scale-105 transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="glass-card p-4 sm:p-5 text-center transform hover:scale-105 transition-all duration-300"
+                style={{ animationDelay: `${index * 0.08}s` }}
               >
-                <div className="text-2xl sm:text-3xl font-bold text-elegant-600 dark:text-elegant-400 mb-1 sm:mb-2">
+                <div className="text-2xl sm:text-3xl font-black text-black dark:text-white mb-1">
                   {stat.number}
                 </div>
-                <div className="text-xs sm:text-sm text-elegant-500 dark:text-gray-300 font-medium leading-tight">
+                <div className="text-[10px] sm:text-xs text-neutral-500 dark:text-gray-400 font-bold uppercase tracking-wider leading-tight">
                   {stat.label}
                 </div>
               </div>

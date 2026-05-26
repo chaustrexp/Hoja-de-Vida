@@ -7,7 +7,7 @@
  * 
  * Características:
  * - Animaciones suaves con CSS
- * - Logo animado con gradientes oatmilk
+ * - Logo animado monocromático
  * - Barra de progreso simulada
  * - Transición de salida elegante
  * - Diseño responsive
@@ -79,85 +79,83 @@ const LoadingScreen = ({ onLoadingComplete }) => {
   }, [progress, onLoadingComplete]);
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-all duration-800 ${
-      isExiting ? 'opacity-0 scale-110' : 'opacity-100 scale-100'
+    <div className={`fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-neutral-950 transition-all duration-1000 ${
+      isExiting ? 'opacity-0 scale-105 blur-md' : 'opacity-100 scale-100'
     }`}>
+      {/* Globos ambientales decorativos de fondo */}
+      <div className="ambient-glow bg-neutral-400 w-[300px] h-[300px] -top-10 -left-10 dark:opacity-10 animate-float-slow"></div>
+      <div className="ambient-glow bg-neutral-500 w-[300px] h-[300px] bottom-10 right-10 dark:opacity-10 animate-float-slow-reverse" style={{ animationDelay: '-8s' }}></div>
+
       {/* Contenedor principal de carga */}
-      <div className="text-center space-y-8 px-4">
+      <div className="text-center space-y-8 px-4 relative z-10">
         
-        {/* Logo animado */}
-        <div className="relative">
-          {/* Avatar principal */}
-          <div className="w-24 h-24 mx-auto mb-6 relative">
-            <div className="w-full h-full bg-gradient-primary rounded-2xl flex items-center justify-center shadow-2xl animate-pulse">
-              <span className="text-white font-bold text-3xl">CC</span>
-            </div>
-            
-            {/* Anillos de carga animados */}
-            <div className="absolute inset-0 rounded-2xl border-4 border-dark-300 animate-spin opacity-30"></div>
-            <div className="absolute inset-2 rounded-xl border-2 border-dark-400 animate-spin opacity-50" style={{ animationDirection: 'reverse', animationDuration: '3s' }}></div>
+        {/* Cargador Circular Monocromático */}
+        <div className="w-32 h-32 mx-auto relative flex items-center justify-center">
+          {/* Círculo interior con porcentaje */}
+          <div className="w-24 h-24 rounded-full bg-neutral-50 dark:bg-neutral-900 backdrop-blur-md flex flex-col items-center justify-center shadow-xl border border-neutral-200 dark:border-white/5 relative z-20">
+            <span className="text-2xl font-black text-black dark:text-white">
+              {progress}%
+            </span>
           </div>
-          
-          {/* Nombre y título */}
-          <div className="space-y-2">
-            <h1 className="text-2xl md:text-3xl font-bold text-gradient">
+
+          {/* Anillos de carga rotatorios */}
+          <div className="absolute inset-0 rounded-full border-2 border-neutral-200 dark:border-neutral-800 animate-pulse"></div>
+          <div 
+            className="absolute inset-1 rounded-full border-t-2 border-r-2 border-black dark:border-white animate-spin" 
+            style={{ animationDuration: '1.2s' }}
+          ></div>
+          <div 
+            className="absolute inset-3 rounded-full border-b-2 border-l-2 border-neutral-400 dark:border-neutral-500 animate-spin" 
+            style={{ animationDirection: 'reverse', animationDuration: '2.5s' }}
+          ></div>
+        </div>
+
+        {/* Información y Mensajes */}
+        <div className="space-y-4">
+          <div className="space-y-1">
+            <h1 className="text-3xl font-extrabold text-black dark:text-white tracking-wide">
               Cristian Contreras
             </h1>
-            <p className="text-dark-600 dark:text-gray-400 font-medium">
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 font-bold uppercase tracking-widest">
               Desarrollador ADSO
             </p>
           </div>
-        </div>
 
-        {/* Barra de progreso */}
-        <div className="w-full max-w-xs mx-auto space-y-3">
-          <div className="w-full bg-dark-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
-            <div 
-              className="h-full bg-gradient-to-r from-dark-600 to-dark-800 rounded-full transition-all duration-300 ease-out"
-              style={{ width: `${progress}%` }}
-            ></div>
+          {/* HUD de progreso */}
+          <div className="w-full max-w-xs mx-auto space-y-2">
+            <div className="w-full bg-neutral-200 dark:bg-neutral-800 backdrop-blur-xs rounded-full h-1.5 overflow-hidden border border-neutral-300 dark:border-neutral-700">
+              <div 
+                className="h-full bg-black dark:bg-white rounded-full transition-all duration-300 ease-out"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+            
+            <div className="flex justify-between items-center text-[10px] font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
+              <span>Cargando Experiencia</span>
+              <span>{progress === 100 ? 'Listo' : 'Inicializando'}</span>
+            </div>
           </div>
-          
-          {/* Porcentaje de progreso */}
-          <div className="flex justify-between items-center text-sm">
-            <span className="text-dark-500 dark:text-gray-400">Cargando portafolio...</span>
-            <span className="text-dark-700 dark:text-gray-300 font-semibold">{progress}%</span>
-          </div>
-        </div>
-
-        {/* Puntos de carga animados */}
-        <div className="flex justify-center space-x-2">
-          {[0, 1, 2].map((index) => (
-            <div
-              key={index}
-              className="w-2 h-2 bg-dark-400 dark:bg-gray-500 rounded-full animate-bounce"
-              style={{ 
-                animationDelay: `${index * 0.2}s`,
-                animationDuration: '1s'
-              }}
-            ></div>
-          ))}
         </div>
 
         {/* Mensaje motivacional */}
-        <div className="mt-8">
-          <p className="text-dark-500 dark:text-gray-400 text-sm italic">
+        <div className="pt-4">
+          <p className="text-xs text-neutral-500 dark:text-neutral-400 italic font-semibold animate-pulse">
             "Preparando una experiencia única..."
           </p>
         </div>
       </div>
 
-      {/* Partículas de fondo decorativas */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, index) => (
+      {/* Partículas de fondo */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        {[...Array(8)].map((_, index) => (
           <div
             key={index}
-            className="absolute w-1 h-1 bg-dark-300 dark:bg-gray-600 rounded-full animate-ping opacity-40"
+            className="absolute w-1 h-1 bg-black dark:bg-white rounded-full animate-ping"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 2}s`,
-              animationDuration: `${2 + Math.random() * 2}s`
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 3}s`
             }}
           ></div>
         ))}
