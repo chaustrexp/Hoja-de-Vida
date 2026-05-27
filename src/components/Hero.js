@@ -319,21 +319,27 @@ const Hero = () => {
         doc.circle(mainX + 2, mainY - 1, 1.5, 'F');
         
         doc.setFont('helvetica', 'bold');
-        doc.setFontSize(11);
+        doc.setFontSize(10.5);
         doc.setTextColor(...colors.primary);
-        doc.text(edu.title, mainX + 8, mainY);
         
-        mainY += 5;
+        // Dividir el título si es muy largo para que no se superponga con la fecha
+        const titleLines = doc.splitTextToSize(edu.title, 65);
+        doc.text(titleLines, mainX + 8, mainY);
+        
+        // Fecha alineada a la derecha en la misma línea inicial
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8.5);
+        doc.setTextColor(...colors.secondary);
+        doc.text(edu.date, mainX + 110, mainY, { align: 'right' });
+        
+        mainY += (titleLines.length * 5);
+        
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(9);
         doc.setTextColor(...colors.accent);
         doc.text(edu.inst, mainX + 8, mainY);
         
-        doc.setFontSize(8.5);
-        doc.setTextColor(...colors.secondary);
-        doc.text(edu.date, mainX + 110, mainY - 5, { align: 'right' });
-        
-        mainY += 12;
+        mainY += 10;
       });
       
       mainY += 5;
@@ -351,8 +357,8 @@ const Hero = () => {
       doc.setTextColor(...colors.secondary);
       
       const achievements = [
-        'Desarrollo de +19 proyectos formativos de alta complejidad',
-        '+700 horas de código documentadas en diversas tecnologías',
+        'Desarrollo de +22 proyectos formativos de alta complejidad',
+        '+850 horas de código documentadas en diversas tecnologías',
         'Dominio de metodologías ágiles y control de versiones',
         'Liderazgo técnico en proyectos colaborativos de clase'
       ];
@@ -367,7 +373,7 @@ const Hero = () => {
       // Pie de página 1
       doc.setFontSize(8);
       doc.setTextColor(...colors.secondary);
-      doc.text('Página 1 de 2', 185, 285);
+      doc.text('Página 1', 185, 285);
       
       // =================== PÁGINA 2 ===================
       doc.addPage();
@@ -420,10 +426,50 @@ const Hero = () => {
           description: 'Portafolio profesional interactivo, optimizado con herramientas de IA para una experiencia de usuario superior.',
           tech: 'React, Tailwind, AI Tools',
           url: 'cristian-portafolio.dev'
+        },
+        {
+          name: 'ProgSENA',
+          description: 'Sistema web para la gestión de programación académica del SENA, incluyendo asignación de instructores y ambientes.',
+          tech: 'PHP, MySQL, JavaScript',
+          url: 'github.com/chaustrexp/Proyecto-Prog-Sena'
+        },
+        {
+          name: 'Sistema de Elementos',
+          description: 'Sistema integral para la gestión, control de inventario y seguimiento detallado de elementos y asignaciones.',
+          tech: 'React, Node.js, CSS',
+          url: 'github.com/AALGarcia/proyecto_elementos'
+        },
+        {
+          name: 'DigiTurno APE SENA',
+          description: 'Sistema Digital de Turnos para la Agencia Pública de Empleo del SENA con kiosco y panel gerencial.',
+          tech: 'Laravel, PHP, TailwindCSS',
+          url: 'github.com/chaustrexp/Proyecto-DigiTurno'
         }
       ];
       
       projects.forEach((project, index) => {
+        if (yPos > 240) {
+          // Pie de página para la página actual
+          doc.setFillColor(...colors.primary);
+          doc.rect(0, 275, 210, 22, 'F');
+          doc.setFont('helvetica', 'italic');
+          doc.setFontSize(8.5);
+          doc.setTextColor(200, 200, 200);
+          doc.text(`Documento generado profesionalmente el ${new Date().toLocaleDateString('es-ES')}`, 20, 285);
+          doc.text(`Página ${doc.internal.getNumberOfPages()}`, 180, 285);
+          
+          doc.addPage();
+          yPos = 25;
+          
+          // Encabezado para la nueva página
+          doc.setFillColor(...colors.primary);
+          doc.rect(0, 0, 210, 15, 'F');
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(10);
+          doc.setTextColor(...colors.white);
+          doc.text('CRISTIAN CONTRERAS - PORTAFOLIO DE PROYECTOS (CONT.)', 105, 9.5, { align: 'center' });
+        }
+
         // Card de proyecto refinada
         doc.setDrawColor(...colors.line);
         doc.setLineWidth(0.3);
@@ -464,7 +510,7 @@ const Hero = () => {
       doc.setFontSize(8.5);
       doc.setTextColor(200, 200, 200);
       doc.text(`Documento generado profesionalmente el ${new Date().toLocaleDateString('es-ES')}`, 20, 285);
-      doc.text('Página 2 de 2', 180, 285);
+      doc.text(`Página ${doc.internal.getNumberOfPages()}`, 180, 285);
       
       // Descargar el PDF
       doc.save('Cristian_Contreras_CV.pdf');

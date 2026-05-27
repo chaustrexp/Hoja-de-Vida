@@ -217,7 +217,9 @@ const Skills = ({ selectedSkill, setSelectedSkill }) => {
               { name: 'Figma', icon: 'fab fa-figma' },
               { name: 'Bootstrap', icon: 'fab fa-bootstrap' },
               { name: 'Antigravity IDE', icon: 'fas fa-terminal' },
-              { name: 'Stitch AI', icon: 'fas fa-brain' }
+              { name: 'Stitch AI', icon: 'fas fa-brain' },
+              { name: 'Canva', icon: 'fas fa-paint-brush' },
+              { name: 'Documentos Google', icon: 'fas fa-file-alt' }
             ].map((tech, index) => (
               <div
                 key={tech.name}

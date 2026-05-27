@@ -108,6 +108,48 @@ const Projects = ({ selectedSkill, setSelectedSkill }) => {
       ],
       link: 'https://portafolio-nuevo-hazel.vercel.app/',
       isExternal: true
+    },
+    {
+      title: 'ProgSENA',
+      description: 'Sistema web para la gestión de programación académica del SENA, incluyendo asignación de instructores, fichas y ambientes.',
+      icon: 'fas fa-calendar-check',
+      technologies: ['PHP', 'MySQL', 'JavaScript', 'HTML/CSS'],
+      features: [
+        'Gestión de Programas',
+        'Control de Instructores',
+        'Asignación de Ambientes',
+        'Dashboard Interactivo'
+      ],
+      link: 'https://github.com/chaustrexp/Proyecto-Prog-Sena.git',
+      isExternal: true
+    },
+    {
+      title: 'Sistema de Elementos',
+      description: 'Sistema integral para la gestión, control de inventario y seguimiento detallado de elementos y asignaciones.',
+      icon: 'fas fa-boxes',
+      technologies: ['React', 'JavaScript', 'Node.js', 'CSS'],
+      features: [
+        'Control de Inventario',
+        'Gestión de Elementos',
+        'Módulo de Asignaciones',
+        'Generación de Reportes'
+      ],
+      link: 'https://github.com/AALGarcia/proyecto_elementos.git',
+      isExternal: true
+    },
+    {
+      title: 'DigiTurno APE SENA',
+      description: 'Sistema Digital de Turnos para la Agencia Pública de Empleo del SENA. Gestiona asignación y monitoreo en tiempo real.',
+      icon: 'fas fa-ticket-alt',
+      technologies: ['Laravel', 'PHP', 'TailwindCSS', 'MySQL'],
+      features: [
+        'Kiosco Digital',
+        'Pantalla Pública de Turnos',
+        'Panel de Asesor',
+        'Dashboard de Coordinador'
+      ],
+      link: 'https://github.com/chaustrexp/Proyecto-DigiTurno.git',
+      isExternal: true
     }
   ];
 
@@ -283,8 +325,8 @@ const Projects = ({ selectedSkill, setSelectedSkill }) => {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-6 sm:mt-8">
               {[
-                { val: "19+", desc: "Proyectos Completados" },
-                { val: "700+", desc: "Horas de Código" },
+                { val: "22+", desc: "Proyectos Completados" },
+                { val: "850+", desc: "Horas de Código" },
                 { val: "100%", desc: "Compromiso y Entrega" }
               ].map((stat, idx) => (
                 <div key={idx} className="text-center group/stat">
